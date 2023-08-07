@@ -1,7 +1,7 @@
 import React from "react";
 
 import Modal from "../Modal/modal.components";
-import Button from "../../Form-Elements/Button/button.components";
+import Button from "../Button/button.components";
 
 const ErrorModal = ({ error, onClear }) => {
   return (

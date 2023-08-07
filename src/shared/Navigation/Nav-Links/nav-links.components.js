@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import profileAvatar from "../../../images/profile.jpg";
 
-// import { AuthContext } from "../../../../shared/context/auth-context";
+import { AuthContext } from "../../../shared/context/auth-context";
 import "./nav-links.styles.css";
 
 const Navlinks = () => {
-  // const auth = useContext(AuthContext);
+  const auth = useContext(AuthContext);
   return (
     <Fragment>
       <ul className="nav-links">
@@ -27,25 +27,35 @@ const Navlinks = () => {
         <li>
           <NavLink to="/contact-us">CONTACT</NavLink>
         </li>
-        <li>
-          <NavLink to="/add-event">ADD EVENT</NavLink>
-        </li>
-        {/* <li>
-          <NavLink to="/authentication">AUTHENTICATION</NavLink>
-        </li> */}
+
+        {auth.isLoggedIn && (
+          <li>
+            <NavLink to="/:userId/events">MY EVENTS</NavLink>
+          </li>
+        )}
 
         <li>
-          <button>ADD EVENT</button>
-        </li>
-        <li>
-          <Link to="/authentication">
-            <img
-              className="profile-avatar"
-              src={profileAvatar}
-              alt="Profile Avatar"
-            />
+          <Link to="/add-new-event" className="linkaa">
+            <button>ADD EVENT</button>
           </Link>
         </li>
+
+        {!auth.isLoggedIn && (
+          <li>
+            <Link to="/authentication">
+              <img
+                className="profile-avatar"
+                src={profileAvatar}
+                alt="Profile Avatar"
+              />
+            </Link>
+          </li>
+        )}
+        {auth.isLoggedIn && (
+          <li>
+            <button onClick={auth.logout}>LOGOUT</button>
+          </li>
+        )}
       </ul>
     </Fragment>
   );

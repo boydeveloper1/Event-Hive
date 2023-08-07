@@ -1,7 +1,12 @@
 import React from "react";
+import HeroHeader from "../../shared/hero-header/hero-header.components";
 
-const blog = () => {
-  return <div>blog</div>;
+const Blog = () => {
+  return (
+    <div>
+      <HeroHeader text={"blog."} />
+    </div>
+  );
 };
 
-export default blog;
+export default Blog;
