@@ -3,12 +3,12 @@ import HerroBanner from "./components/hero-banner/hero-banner.components";
 import FeaturedEventsList from "./components/featured-events/featured-events-list/featured-events-list.components";
 import HomeButton from "./components/button/button.components";
 import DoubleHeader from "../../shared/double-header/double-header.components";
-import SliderCard from "./components/slider-area/slider-area.components";
-
-import { Box } from "@mui/material";
 
 import "./home.styles.css";
 import CarouselComponent from "./components/slider-area/slider-area.components";
+import BrowseByProvince from "./components/browser/browser.components";
+
+import GuestArtist from "./components/guest-artists/guest-artist.components";
 
 // Data fpr sliderCard
 const data = [
@@ -44,7 +44,7 @@ const DUMMY_PLACES = [
     creator: "u1",
   },
   {
-    id: "p1",
+    id: "p2",
     title: "Empire State Building Empire State Building ",
     description: "One of the most famous sky scrapers in the world!",
     url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
@@ -59,7 +59,7 @@ const DUMMY_PLACES = [
     creator: "u1",
   },
   {
-    id: "p1",
+    id: "p3",
     title: "Empire State Building Empire State Building ",
     description: "One of the most famous sky scrapers in the world!",
     url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
@@ -74,7 +74,7 @@ const DUMMY_PLACES = [
     creator: "u1",
   },
   {
-    id: "p1",
+    id: "p4",
     title: "Empire State Building Empire State Building ",
     description: "One of the most famous sky scrapers in the world!",
     url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
@@ -89,7 +89,7 @@ const DUMMY_PLACES = [
     creator: "u1",
   },
   {
-    id: "p1",
+    id: "p5",
     title: "Empire State Building",
     description: "One of the most famous sky scrapers in the world!",
     url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
@@ -104,7 +104,7 @@ const DUMMY_PLACES = [
     creator: "u1",
   },
   {
-    id: "p2",
+    id: "p6",
     title: "Emp. State Building",
     description: "One of the most famous sky scrapers in the world!",
     url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
@@ -125,6 +125,8 @@ const Home = () => {
       <FeaturedEventsList items={DUMMY_PLACES} />
       <HomeButton text="See More Events" url="/all-events" />
       <CarouselComponent />
+      <BrowseByProvince />
+      <GuestArtist />
     </div>
   );
 };

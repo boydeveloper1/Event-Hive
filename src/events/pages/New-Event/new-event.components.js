@@ -20,7 +20,7 @@ import { Fragment } from "react";
 import HeroHeader from "../../../shared/hero-header/hero-header.components";
 
 const NewEvent = () => {
-  const options = [
+  const ProvinceOptions = [
     "Ontario",
     "British Columbia",
     "New Brunswick",
@@ -30,6 +30,14 @@ const NewEvent = () => {
     "Saskatchewan",
     "Nova Scotia",
     "Quebec",
+  ];
+  const EventOptions = [
+    "Health and Wellness",
+    "Entertainment",
+    "Fashion and Beauty",
+    "Education and Training",
+    "Business and Strategy",
+    "Sports and Travel",
   ];
   // const auth = useContext(AuthContext);
   // const { isLoading, error, clearError, sendRequest } = useHttpClient();
@@ -44,6 +52,10 @@ const NewEvent = () => {
         isValid: false,
       },
       organizer: {
+        value: "",
+        isValid: false,
+      },
+      category: {
         value: "",
         isValid: false,
       },
@@ -110,7 +122,6 @@ const NewEvent = () => {
         />
         <Input
           id="description"
-          eventholder=""
           element="textarea"
           label="Description"
           validators={[VALIDATOR_MINLENGTH(5)]}
@@ -127,9 +138,18 @@ const NewEvent = () => {
           onInput={InputHandler}
         />
         <Input
+          id="category"
+          element="select"
+          options={EventOptions}
+          label="Event Category"
+          validators={[VALIDATOR_REQUIRE]}
+          errorText="Please enter a valid Category. "
+          onInput={InputHandler}
+        />
+        <Input
           id="province"
           element="select"
-          options={options}
+          options={ProvinceOptions}
           label="Province"
           validators={[VALIDATOR_REQUIRE]}
           errorText="Please enter a valid Province. "

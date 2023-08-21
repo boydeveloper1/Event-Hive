@@ -11,17 +11,17 @@ const DoubleHeader = ({
   headingStyles,
 }) => {
   return (
-    <Box textAlign="center" sx={{ position: "relative", zIndex: 2 }}>
+    <Box textAlign="center" sx={styles.box}>
       <Typography
         variant="h6"
-        component="h2"
+        component="h3"
         sx={subHeadingStyles || styles.subHeading}
       >
         {subheading}
       </Typography>
       <Typography
         variant="h4"
-        component="h1"
+        component="h2"
         sx={headingStyles || styles.heading}
       >
         {heading}

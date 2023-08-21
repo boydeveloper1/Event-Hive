@@ -20,6 +20,25 @@ import { useHttpClient } from "../../../shared/hooks/http-hook";
 import "./update-event.styles.css";
 
 const UpdateEvent = () => {
+  const ProvinceOptions = [
+    "Ontario",
+    "British Columbia",
+    "New Brunswick",
+    "Alberta",
+    "Manitoba",
+    "Prince Edward Island",
+    "Saskatchewan",
+    "Nova Scotia",
+    "Quebec",
+  ];
+  const EventOptions = [
+    "Health and Wellness",
+    "Entertainment",
+    "Fashion and Beauty",
+    "Education and Training",
+    "Business and Strategy",
+    "Sports and Travel",
+  ];
   // const auth = useContext(AuthContext);
   const { isLoading, error, clearError, sendRequest } = useHttpClient();
   const [loadedevent, setLoadedevent] = useState();
@@ -38,6 +57,10 @@ const UpdateEvent = () => {
         isValid: false,
       },
       organizer: {
+        value: "",
+        isValid: false,
+      },
+      category: {
         value: "",
         isValid: false,
       },
@@ -176,10 +199,20 @@ const UpdateEvent = () => {
             onInput={inputHandler}
           />
           <Input
+            id="category"
+            element="select"
+            options={EventOptions}
+            initialValue={loadedevent.category}
+            label="Event Category"
+            validators={[VALIDATOR_REQUIRE]}
+            errorText="Please enter a valid Province. "
+            onInput={inputHandler}
+          />
+          <Input
             id="province"
             element="select"
-            options={loadedevent.options}
-            initialValue={loadedevent.options}
+            options={ProvinceOptions}
+            initialValue={loadedevent.province}
             label="Province"
             validators={[VALIDATOR_REQUIRE]}
             errorText="Please enter a valid Province. "
