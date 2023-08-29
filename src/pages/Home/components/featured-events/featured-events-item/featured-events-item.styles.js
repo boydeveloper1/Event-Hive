@@ -5,7 +5,7 @@ export const styles = {
     backGroundColor: "#white",
     mt: "3px",
     mb: "3px",
-    boxShadow: "10px 5px 5px #077307",
+    boxShadow: "10px 5px 5px #D0D2CC",
   },
 
   cardContent: { height: 200, marginBottom: "20px" },
@@ -16,6 +16,7 @@ export const styles = {
     fontSize: 25,
     verticalAlign: "middle",
     color: "#009B4D",
+    marginLeft: "-4px",
   },
 
   date: { mt: "9px" },
@@ -24,11 +25,12 @@ export const styles = {
     fontSize: 22,
     verticalAlign: "middle",
     color: "#009B4D",
+    marginRight: "4px",
   },
 
   organizedBy: { mt: "9px", fontSize: 15, fontSize: 17 },
 
-  organizer: { fontWeight: "bold", fontSize: 19 },
+  organizer: { fontWeight: 800, fontSize: 19, color: "green" },
 
   cardActions: {
     display: "flex",

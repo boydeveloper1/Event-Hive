@@ -35,7 +35,7 @@ const lookingForHelpLinks = [
 
 const Footer = () => {
   return (
-    <Box>
+    <Box sx={styles.boxx}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={5} sx={styles.grid}>
           <Link to={"/"}>
@@ -54,7 +54,7 @@ const Footer = () => {
           </Typography>
           <Link>
             <img
-              src="/images/download.png"
+              src="/images/pengg.png"
               alt="Image 2"
               style={{ marginLeft: "-2%" }}
             />

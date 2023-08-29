@@ -5,6 +5,7 @@ export const useHttpClient = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 
+  // hold data that doesn't change over re-render cycle - useREf
   const activeHttpRequests = useRef([]);
 
   const sendRequest = useCallback(

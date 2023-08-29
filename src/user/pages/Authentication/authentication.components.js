@@ -23,12 +23,12 @@ import { useForm } from "../../../shared/hooks/form-hooks.js";
 // custom hook for server requests
 import { useHttpClient } from "../../../shared/hooks/http-hook";
 
-// import { AuthContext } from "../../../shared/context/auth-context";
+import { AuthContext } from "../../../shared/context/auth-context";
 
 import "./authentication.styles.css";
 
 const Authentication = () => {
-  // const auth = useContext(AuthContext);
+  const auth = useContext(AuthContext);
 
   // state to control the sign up form and login form field and buttons
   const [isLoginMode, setIsLoginMode] = useState(true);
@@ -95,8 +95,8 @@ const Authentication = () => {
           { "Content-Type": "application/json" }
         );
         // once the user hit the (signup), then the login state changes to true
-        // auth.login(responseData.userId, responseData.token);
-        navigate("/");
+        auth.login(responseData.userId, responseData.token, responseData.image);
+        navigate("/"); //navigate to dashboard here
       } catch (err) {}
     } else {
       try {
@@ -112,7 +112,8 @@ const Authentication = () => {
         );
 
         // once the user hit the (login), then the login state changes to true
-        // auth.login(responseData.userId, responseData.token);
+        auth.login(responseData.userId, responseData.token, responseData.image);
+
         navigate("/");
       } catch (error) {}
     }

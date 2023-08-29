@@ -1,130 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HerroBanner from "./components/hero-banner/hero-banner.components";
 import FeaturedEventsList from "./components/featured-events/featured-events-list/featured-events-list.components";
 import HomeButton from "./components/button/button.components";
 import DoubleHeader from "../../shared/double-header/double-header.components";
 
-import "./home.styles.css";
 import CarouselComponent from "./components/slider-area/slider-area.components";
 import BrowseByProvince from "./components/browser/browser.components";
-
 import GuestArtist from "./components/guest-artists/guest-artist.components";
+import ErrorModal from "../../shared/Error-Modal/error-modal.components";
+import LoadingSpinner from "../../shared/Loading-Spinner/loading-spinner.components";
 
-// Data fpr sliderCard
-const data = [
-  {
-    image:
-      "https://images.unsplash.com/photo-1690746138480-1245dc220809?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80",
-    text: "Card 1",
-    events: 10,
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1690746138480-1245dc220809?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80",
-    text: "Card 1",
-    events: 10,
-  },
-  // Add more data for the remaining cards
-];
+import { useHttpClient } from "../../shared/hooks/http-hook";
 
-const DUMMY_PLACES = [
-  {
-    id: "p1",
-    title: "Empire State Building Empire State Building ",
-    description: "One of the most famous sky scrapers in the world!",
-    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
-    address: "20 W 34th St, New York, NY 10001",
-    organizer: "House of Piano",
-    date: "25th March 2023",
-    province: "Alberta",
-    location: {
-      lat: 40.7484405,
-      lng: -73.9878584,
-    },
-    creator: "u1",
-  },
-  {
-    id: "p2",
-    title: "Empire State Building Empire State Building ",
-    description: "One of the most famous sky scrapers in the world!",
-    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
-    address: "20 W 34th St, New York, NY 10001",
-    organizer: "House of Piano",
-    date: "25th March 2023",
-    province: "Alberta",
-    location: {
-      lat: 40.7484405,
-      lng: -73.9878584,
-    },
-    creator: "u1",
-  },
-  {
-    id: "p3",
-    title: "Empire State Building Empire State Building ",
-    description: "One of the most famous sky scrapers in the world!",
-    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
-    address: "20 W 34th St, New York, NY 10001",
-    organizer: "House of Piano",
-    date: "25th March 2023",
-    province: "Alberta",
-    location: {
-      lat: 40.7484405,
-      lng: -73.9878584,
-    },
-    creator: "u1",
-  },
-  {
-    id: "p4",
-    title: "Empire State Building Empire State Building ",
-    description: "One of the most famous sky scrapers in the world!",
-    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
-    address: "20 W 34th St, New York, NY 10001",
-    organizer: "House of Piano",
-    date: "25th March 2023",
-    province: "Alberta",
-    location: {
-      lat: 40.7484405,
-      lng: -73.9878584,
-    },
-    creator: "u1",
-  },
-  {
-    id: "p5",
-    title: "Empire State Building",
-    description: "One of the most famous sky scrapers in the world!",
-    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
-    address: "20 W 34th St, New York, NY 10001",
-    organizer: "House of Piano",
-    date: "25th March 2023",
-    province: "Alberta",
-    location: {
-      lat: 40.7484405,
-      lng: -73.9878584,
-    },
-    creator: "u1",
-  },
-  {
-    id: "p6",
-    title: "Emp. State Building",
-    description: "One of the most famous sky scrapers in the world!",
-    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
-    address: "20 W 34th St, New York, NY 10001",
-    location: {
-      lat: 40.7484405,
-      lng: -73.9878584,
-    },
-    creator: "u2",
-  },
-];
+import "./home.styles.css";
 
 const Home = () => {
+  const [loadedEvents, setLoadedEvents] = useState(null);
+  const [loadedEventsCounts, setLoadedEventsCounts] = useState(null);
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const responseData = await sendRequest(
+          process.env.REACT_APP_BACKEND_URL + "/events"
+        );
+
+        setLoadedEvents(responseData.events.slice(0, 6).reverse());
+        setLoadedEventsCounts(responseData.events);
+      } catch (error) {}
+    };
+    fetchEvents();
+  }, [sendRequest]);
+
   return (
     <div className="entireHome">
+      <ErrorModal error={error} onClear={clearError} />
+      {isLoading && (
+        <div className="center">
+          <LoadingSpinner />
+        </div>
+      )}
       <HerroBanner />
       <DoubleHeader subheading={"Upcoming Event"} heading={"Featured Events"} />
-      <FeaturedEventsList items={DUMMY_PLACES} />
+      {!isLoading && loadedEvents && (
+        <FeaturedEventsList items={loadedEvents} />
+      )}
       <HomeButton text="See More Events" url="/all-events" />
-      <CarouselComponent />
+      <CarouselComponent events={loadedEventsCounts} />
       <BrowseByProvince />
       <GuestArtist />
     </div>

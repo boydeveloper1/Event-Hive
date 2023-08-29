@@ -7,7 +7,7 @@ const ErrorModal = ({ error, onClear }) => {
   return (
     <Modal
       onCancel={onClear}
-      header="An Error Occurred!"
+      header="Oops, it appears that an error has been encountered."
       show={!!error}
       footer={<Button onClick={onClear}>Okay</Button>}
     >

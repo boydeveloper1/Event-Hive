@@ -7,12 +7,14 @@ let logOutTimer;
 
 export const useAuth = () => {
   const [token, setToken] = useState(false);
+  const [image, setImage] = useState(false);
   const [tokenExpirationDate, setTokenExpirationDate] = useState();
   const [userId, setUserId] = useState(false);
 
-  const login = useCallback((uid, token, expirationDate) => {
+  const login = useCallback((uid, token, image, expirationDate) => {
     setToken(token);
     setUserId(uid);
+    setImage(image);
     const tokenExpirationDate =
       expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
     setTokenExpirationDate(tokenExpirationDate);
@@ -31,6 +33,7 @@ export const useAuth = () => {
     setToken(null);
     setTokenExpirationDate(null);
     setUserId(null);
+    setImage(null);
     localStorage.removeItem("userData");
   }, []);
 
@@ -61,5 +64,5 @@ export const useAuth = () => {
     }
   }, [login]);
 
-  return { token, login, logout, userId };
+  return { token, login, logout, userId, image };
 };

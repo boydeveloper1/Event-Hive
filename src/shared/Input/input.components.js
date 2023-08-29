@@ -40,6 +40,7 @@ const Input = ({
   initialValue,
   initialValid,
   options,
+  min,
 }) => {
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: initialValue || "",
@@ -69,7 +70,7 @@ const Input = ({
     });
   };
 
-  // This defines the input for the form - either imput or textarea
+  // This defines the input for the form - either imput or select or  textarea
   const main =
     element === "input" ? (
       <input
@@ -79,12 +80,15 @@ const Input = ({
         type={type}
         placeholder={placeholder}
         value={inputState.value}
+        min={min}
       />
     ) : element === "select" ? (
       <select onChange={changeHandler} onBlur={touchHandler} id={id}>
-        <option>--Please choose an option--</option>
+        <option value="">--Please choose an option--</option>
         {options.map((option) => (
-          <option value={inputState.value}>{option}</option>
+          <option key={option} value={option}>
+            {option}
+          </option>
         ))}
       </select>
     ) : (

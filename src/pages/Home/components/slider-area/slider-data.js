@@ -21,13 +21,13 @@ export const data = [
     events: 5,
   },
   {
-    imageUrl: "https://cdn-icons-png.flaticon.com/128/3135/3135727.png",
-    title: "Business and Strategy",
+    imageUrl: "https://cdn-icons-png.flaticon.com/128/4365/4365271.png",
+    title: "Technology and Innovation",
     events: 5,
   },
   {
-    imageUrl: "https://cdn-icons-png.flaticon.com/128/3311/3311579.png",
-    title: "Sports and Travel",
+    imageUrl: "https://cdn-icons-png.flaticon.com/128/737/737967.png",
+    title: "Food and Culinary",
     events: 5,
   },
 ];

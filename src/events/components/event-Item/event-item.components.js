@@ -39,15 +39,15 @@ const EventItem = ({ event, onDelete }) => {
   // umounts modal and also communicates delete request of an event to backend
   const confirmDeleteHandler = async () => {
     setShowConfirmModal(false);
-    // try {
-    //   await sendRequest(
-    //     process.env.REACT_APP_BACKEND_URL + `/events/${id}`,
-    //     "DELETE",
-    //     null,
-    //     { Authorization: "Bearer " + auth.token }
-    //   );
-    //   onDelete(id);
-    // } catch (error) {}
+    try {
+      await sendRequest(
+        process.env.REACT_APP_BACKEND_URL + `/events/${id}`,
+        "DELETE",
+        null,
+        { Authorization: "Bearer " + auth.token }
+      );
+      onDelete(id);
+    } catch (error) {}
   };
 
   return (

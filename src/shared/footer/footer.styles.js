@@ -1,4 +1,7 @@
 export const styles = {
+  boxx: {
+    marginTop: "4%",
+  },
   grid: {
     background: "linear-gradient(to right, #006400, #000000)",
     color: "white",

@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { Fragment } from "react";
-import { Routes, Route, Navigate, Router } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import MainNavigation from "./shared/Navigation/Main-Navigation/main-navigation.componenrts";
 import Home from "./pages/Home/home.components";
@@ -19,7 +19,7 @@ import { useAuth } from "./shared/hooks/auth-hook";
 import FooterCopyright from "./shared/footer-copyright/footer-copyright.components";
 
 const App = () => {
-  const { token, login, logout, userId } = useAuth();
+  const { token, login, logout, userId, image } = useAuth();
 
   let routes;
 
@@ -45,8 +45,6 @@ const App = () => {
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/authentication" element={<Authentication />} />
-        <Route path="/:userId/events" element={<UserEvents />} />
-        <Route path="/add-new-event" element={<NewEvent />} />
         <Route path="*" element={<Navigate replace to="/authentication" />} />
       </Fragment>
     );
@@ -57,6 +55,7 @@ const App = () => {
       value={{
         isLoggedIn: !!token,
         token: token,
+        image: image,
         userId: userId,
         login: login,
         logout: logout,
@@ -66,7 +65,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<MainNavigation />}>
             {routes}
-            {/* <Route path="/" element={<Footer />} /> */}
           </Route>
         </Routes>
         <Footer />

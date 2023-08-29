@@ -32,7 +32,7 @@ import { useHttpClient } from "../../../../../shared/hooks/http-hook";
 import { styles } from "./featured-events-item.styles";
 
 const FeaturedEventsItem = ({ event }) => {
-  const { id, province, date, url, title, location, organizer, address } =
+  const { id, province, date, image, title, location, organizer, address } =
     event;
 
   const { isLoading, error, clearError } = useHttpClient();
@@ -65,7 +65,12 @@ const FeaturedEventsItem = ({ event }) => {
           {isLoading && <LoadingSpinner />}
 
           <CardActionArea>
-            <CardMedia component="img" height="200" image={url} alt={title} />
+            <CardMedia
+              component="img"
+              height="200"
+              image={image.url}
+              alt={title}
+            />
             <CardContent sx={styles.cardContent}>
               <Typography
                 gutterBottom

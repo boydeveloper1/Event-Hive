@@ -9,9 +9,10 @@ const DoubleHeader = ({
   heading,
   subHeadingStyles,
   headingStyles,
+  boxStyles,
 }) => {
   return (
-    <Box textAlign="center" sx={styles.box}>
+    <Box textAlign="center" sx={boxStyles || styles.box}>
       <Typography
         variant="h6"
         component="h3"

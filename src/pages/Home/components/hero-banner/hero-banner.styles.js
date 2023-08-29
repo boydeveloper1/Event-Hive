@@ -12,13 +12,7 @@ export const styles = {
     textAlign: "center",
     padding: "40px 0",
   },
-  button: {
-    position: "absolute",
-    top: "60%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    zIndex: 1,
-  },
+  button: {},
   typography1: {
     position: "absolute",
     top: "40%",
@@ -34,5 +28,30 @@ export const styles = {
     transform: "translate(-50%, -50%)",
     zIndex: 1,
     width: "100%",
+  },
+  subHeadingStyles: {
+    fontStyle: "italic",
+    color: "#FECB00",
+    fontSize: "24px",
+  },
+  headingStyles: {
+    fontSize: "90px",
+    fontWeight: "bold",
+    marginBottom: "3rem",
+    lineHeight: "90%",
+    "@media (max-width: 1275px)": {
+      fontSize: "40px",
+    },
+    "@media (min-width: 2646px) and (max-width: 5000px)": {
+      fontSize: "200px",
+    },
+  },
+  boxStyles: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    zIndex: 1,
+    width: "70%",
   },
 };

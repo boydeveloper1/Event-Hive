@@ -34,11 +34,13 @@ const Navlinks = () => {
           </li>
         )}
 
-        <li>
-          <Link to="/add-new-event" className="linkaa">
-            <button>ADD EVENT</button>
-          </Link>
-        </li>
+        {auth.isLoggedIn && (
+          <li>
+            <Link to="/add-new-event" className="linkaa">
+              <button>ADD EVENT</button>
+            </Link>
+          </li>
+        )}
 
         {!auth.isLoggedIn && (
           <li>
@@ -51,9 +53,21 @@ const Navlinks = () => {
             </Link>
           </li>
         )}
+
         {auth.isLoggedIn && (
           <li>
             <button onClick={auth.logout}>LOGOUT</button>
+          </li>
+        )}
+        {auth.isLoggedIn && (
+          <li>
+            <Link to="/dashboard">
+              <img
+                className="profile-avatar"
+                src={auth.image}
+                alt="Profile Avatar"
+              />
+            </Link>
           </li>
         )}
       </ul>

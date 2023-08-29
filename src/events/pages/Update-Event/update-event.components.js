@@ -15,7 +15,7 @@ import {
 
 import { useForm } from "../../../shared/hooks/form-hooks";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
-// import { AuthContext } from "../../../shared/context/auth-context";
+import { AuthContext } from "../../../shared/context/auth-context";
 
 import "./update-event.styles.css";
 
@@ -39,7 +39,7 @@ const UpdateEvent = () => {
     "Business and Strategy",
     "Sports and Travel",
   ];
-  // const auth = useContext(AuthContext);
+  const auth = useContext(AuthContext);
   const { isLoading, error, clearError, sendRequest } = useHttpClient();
   const [loadedevent, setLoadedevent] = useState();
   const eventId = useParams().eventId;
@@ -84,64 +84,82 @@ const UpdateEvent = () => {
     false
   );
 
-  // useEffect(() => {
-  //   const fetchevent = async () => {
-  //     try {
-  //       const responseData = await sendRequest(
-  //         `${process.env.REACT_APP_BACKEND_URL}/events/${eventId}`
-  //       );
-  //       setLoadedevent(responseData.event);
+  useEffect(() => {
+    const fetchevent = async () => {
+      try {
+        const responseData = await sendRequest(
+          `${process.env.REACT_APP_BACKEND_URL}/events/${eventId}`
+        );
+        setLoadedevent(responseData.event);
 
-  //       // setting default values on form from current events loaded from db
-  //       setFormData(
-  //         {
-  //           title: {
-  //             value: responseData.event.title,
-  //             isValid: true,
-  //           },
-  //           description: {
-  //             value: responseData.event.description,
-  //             isValid: true,
-  //           },
-  //           address: {
-  //             value: responseData.event.address,
-  //             isValid: true,
-  //           },
-  //           date: {
-  //             value: responseData.event.date,
-  //             isValid: true,
-  //           },
-  //           price: {
-  //             value: responseData.event.price,
-  //             isValid: true,
-  //           },
-  //         },
-  //         true
-  //       );
-  //     } catch (error) {}
-  //   };
-  //   fetchevent();
-  // }, [sendRequest, eventId, setFormData]);
+        // setting default values on form from current events loaded from db
+        setFormData(
+          {
+            title: {
+              value: responseData.event.title,
+              isValid: true,
+            },
+            description: {
+              value: responseData.event.description,
+              isValid: true,
+            },
+            organizer: {
+              value: responseData.event.organizer,
+              isValid: true,
+            },
+            category: {
+              value: responseData.event.category,
+              isValid: true,
+            },
+            province: {
+              value: responseData.event.province,
+              isValid: true,
+            },
+            address: {
+              value: responseData.event.address,
+              isValid: true,
+            },
+            date: {
+              value: responseData.event.date,
+              isValid: true,
+            },
+            price: {
+              value: responseData.event.price,
+              isValid: true,
+            },
+          },
+          true
+        );
+      } catch (error) {}
+    };
+    fetchevent();
+  }, [sendRequest, eventId, setFormData]);
 
   // Function that calls to the db
-  // const eventUpdateSubmitHandler = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     await sendRequest(
-  //       `${process.env.REACT_APP_BACKEND_URL}/events/${eventId}`,
-  //       "PATCH",
-  //       JSON.stringify({
-  //         title: formState.input.title.value,
-  //         description: formState.input.description.value,
-  //       }),
-  //       {
-  //         "Content-Type": "application/json",
-  //         Authorization: "Bearer " + auth.token,
-  //       }
-  //     );
-  //     navigate("/" + auth.userId + "/events");
-  //   } catch (error) {}
-  // };
+  const eventUpdateSubmitHandler = async (event) => {
+    event.preventDefault();
+    try {
+      await sendRequest(
+        `${process.env.REACT_APP_BACKEND_URL}/events/${eventId}`,
+        "PATCH",
+        JSON.stringify({
+          title: formState.input.title.value,
+          description: formState.input.description.value,
+          organizer: formState.input.organizer.value,
+          category: formState.input.category.value,
+          province: formState.input.province.value,
+          address: formState.input.address.value,
+          date: formState.input.date.value,
+          price: formState.input.price.value,
+        }),
+        {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + auth.token,
+        }
+      );
+      navigate("/" + auth.userId + "/events");
+    } catch (error) {}
+  };
 
   if (isLoading) {
     return (
@@ -163,9 +181,9 @@ const UpdateEvent = () => {
 
   return (
     <Fragment>
-      {/* <ErrorModal error={error} onClear={clearError} /> */}
+      <ErrorModal error={error} onClear={clearError} />
       {!isLoading && loadedevent && (
-        <form className="event-form">
+        <form className="event-form" onSubmit={eventUpdateSubmitHandler}>
           <Input
             id="title"
             element="input"

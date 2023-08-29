@@ -8,7 +8,15 @@ import { styles } from "./slider-area.styles";
 
 import { data } from "./slider-data";
 
-const CarouselComponent = () => {
+const CarouselComponent = ({ events }) => {
+  // calculating the number of events in the category
+  const calculateCategoryCount = (category) => {
+    if (events) {
+      return events.filter((event) => event.category === category).length;
+    }
+    return 0;
+  };
+
   return (
     <Box sx={styles.box}>
       <DoubleHeader
@@ -35,8 +43,9 @@ const CarouselComponent = () => {
                 <Typography variant="h5" sx={styles.typography}>
                   {item.title}
                 </Typography>
+
                 <Typography variant="body1" sx={styles.events}>
-                  Number of events: {item.events}
+                  Number of events: {calculateCategoryCount(item.title)}
                 </Typography>
               </Card>
             </Link>
