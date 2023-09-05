@@ -17,6 +17,7 @@ import Footer from "./shared/footer/footer.components";
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
 import FooterCopyright from "./shared/footer-copyright/footer-copyright.components";
+import EventDetailPage from "./shared/Event-Details/eventdetails.components";
 
 const App = () => {
   const { token, login, logout, userId, image } = useAuth();
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/about-us" element={<About />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/event/details/:id" element={<EventDetailPage />} />
         <Route path="/:userId/events" element={<UserEvents />} />
         <Route path="/add-new-event" element={<NewEvent />} />
         <Route path="/event/:eventId" element={<UpdateEvent />} />
@@ -45,6 +47,7 @@ const App = () => {
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/authentication" element={<Authentication />} />
+        <Route path="/event/details/:id" element={<EventDetailPage />} />
         <Route path="*" element={<Navigate replace to="/authentication" />} />
       </Fragment>
     );

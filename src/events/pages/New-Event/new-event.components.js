@@ -212,7 +212,7 @@ const NewEvent = () => {
           id="price"
           element="input"
           type="text"
-          placeholder="E.g $200"
+          placeholder="Example 200 or 3000"
           label="Price"
           validators={[VALIDATOR_REQUIRE]}
           errorText="Please enter a valid price."

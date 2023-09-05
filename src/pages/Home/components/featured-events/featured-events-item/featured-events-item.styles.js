@@ -8,7 +8,7 @@ export const styles = {
     boxShadow: "10px 5px 5px #D0D2CC",
   },
 
-  cardContent: { height: 200, marginBottom: "20px" },
+  cardContent: { height: 200, marginBottom: "20px", color: "black" },
 
   title: { fontWeight: "bold" },
 
@@ -20,6 +20,8 @@ export const styles = {
   },
 
   date: { mt: "9px" },
+
+  Link: { textDecoration: "none" },
 
   event: {
     fontSize: 22,

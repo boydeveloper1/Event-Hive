@@ -14,7 +14,7 @@ export const styles = {
   },
   typography1: {
     position: "absolute",
-    top: "40%",
+    top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
     zIndex: 1,

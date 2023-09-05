@@ -15,8 +15,8 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import "./home.styles.css";
 
 const Home = () => {
-  const [loadedEvents, setLoadedEvents] = useState(null);
-  const [loadedEventsCounts, setLoadedEventsCounts] = useState(null);
+  const [loadedEvents, setLoadedEvents] = useState([]);
+  const [loadedEventsCounts, setLoadedEventsCounts] = useState([]);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   useEffect(() => {
     const fetchEvents = async () => {
@@ -24,8 +24,10 @@ const Home = () => {
         const responseData = await sendRequest(
           process.env.REACT_APP_BACKEND_URL + "/events"
         );
+        const startIndex = Math.max(0, responseData.events.length - 6);
+        const last6Events = responseData.events.slice(startIndex).reverse();
 
-        setLoadedEvents(responseData.events.slice(0, 6).reverse());
+        setLoadedEvents(last6Events);
         setLoadedEventsCounts(responseData.events);
       } catch (error) {}
     };
@@ -47,7 +49,7 @@ const Home = () => {
       )}
       <HomeButton text="See More Events" url="/all-events" />
       <CarouselComponent events={loadedEventsCounts} />
-      <BrowseByProvince />
+      <BrowseByProvince events={loadedEventsCounts} />
       <GuestArtist />
     </div>
   );

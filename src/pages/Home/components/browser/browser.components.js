@@ -18,7 +18,14 @@ import {
 import { cardData } from "./browser-data";
 import { styles } from "./browser.styles";
 
-const BrowseByProvince = () => {
+const BrowseByProvince = ({ events }) => {
+  // calculating the number of events in the province
+  const calculateCategoryCount = (province) => {
+    if (events) {
+      return events.filter((event) => event.province === province).length;
+    }
+    return 0;
+  };
   return (
     <>
       <CssBaseline />
@@ -31,9 +38,9 @@ const BrowseByProvince = () => {
         />
         <Grid container spacing={3} justifyContent="center">
           {cardData.map((card, index) => (
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={3} key={card.id}>
               <Link style={{ textDecoration: "none" }} to={card.url}>
-                <Card key={index} sx={styles.card}>
+                <Card key={card.id} sx={styles.card}>
                   <CardContent sx={styles.cardContent}>
                     <img
                       src={card.image}
@@ -44,7 +51,10 @@ const BrowseByProvince = () => {
                       {card.title}
                     </Typography>
                     <Button variant="outlined" disabled sx={styles.button}>
-                      {card.buttonText}
+                      {calculateCategoryCount(
+                        card.title.replace("Events in ", "")
+                      )}{" "}
+                      events
                     </Button>
                   </CardContent>
                 </Card>

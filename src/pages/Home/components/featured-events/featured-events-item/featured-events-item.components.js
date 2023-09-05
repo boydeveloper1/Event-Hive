@@ -1,5 +1,6 @@
 // Basic react library
-import React, { Fragment, useState, useContext } from "react";
+import React, { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 
 // material Ui
 import {
@@ -63,49 +64,53 @@ const FeaturedEventsItem = ({ event }) => {
       <Grid item key={id} xs={12} sm={12} md={6} lg={4} xl={4}>
         <Card sx={styles.card}>
           {isLoading && <LoadingSpinner />}
-
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="200"
-              image={image.url}
-              alt={title}
-            />
-            <CardContent sx={styles.cardContent}>
-              <Typography
-                gutterBottom
-                variant="h5"
-                component="h2"
-                sx={styles.title}
-              >
-                {title}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                <Room sx={styles.room} />
-                {address}, {province}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                component="p"
-                sx={styles.date}
-              >
-                <Event sx={styles.event} />
-                {date}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                component="p"
-                sx={styles.organizedBy}
-              >
-                Organized By:
-              </Typography>
-              <Typography component="span" sx={styles.organizer}>
-                {organizer}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+          <Link
+            style={{ textDecoration: "none" }}
+            to={`/event/details/${event.id}`}
+          >
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="200"
+                image={image.url}
+                alt={title}
+              />
+              <CardContent sx={styles.cardContent}>
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="h2"
+                  sx={styles.title}
+                >
+                  {title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  <Room sx={styles.room} />
+                  {address}, {province}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                  sx={styles.date}
+                >
+                  <Event sx={styles.event} />
+                  {date}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                  sx={styles.organizedBy}
+                >
+                  Organized By:
+                </Typography>
+                <Typography component="span" sx={styles.organizer}>
+                  {organizer}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Link>
           <CardActions sx={styles.cardActions}>
             <Button
               sx={styles.buttonOne}

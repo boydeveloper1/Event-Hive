@@ -37,6 +37,12 @@
   }
 }
 
-/* main {
-  margin-top: rem;
-} */
+html {
+  height: 100vh;
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+}

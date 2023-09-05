@@ -6,6 +6,7 @@ import MyCard from "../../../../../shared/Card/card-components";
 import FeaturedEventsItem from "../featured-events-item/featured-events-item.components";
 import MyButton from "../../../../../shared/Button/button.components";
 import "./featured-events-list.styles.css";
+import { Link } from "react-router-dom";
 
 const FeaturedEventsList = ({ items }) => {
   // If there is no event, display a card component to create a new event

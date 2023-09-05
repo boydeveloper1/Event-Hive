@@ -8,7 +8,7 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 
 const Events = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const [loadedEvents, setLoadedEvents] = useState();
+  const [loadedEvents, setLoadedEvents] = useState([]);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -26,7 +26,7 @@ const Events = () => {
   return (
     <Fragment>
       <HeroHeader text={"events."} />
-      // <ErrorModal error={error} onClear={clearError} />
+      <ErrorModal error={error} onClear={clearError} />
       {isLoading && (
         <div className="center">
           <LoadingSpinner />

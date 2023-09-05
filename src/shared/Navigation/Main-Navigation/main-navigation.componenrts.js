@@ -6,6 +6,7 @@ import MainHeader from "../Main-Header/main-header.components";
 import Navlinks from "../Nav-Links/nav-links.components";
 import SideDrawer from "../Side-Drawer/side-drawer.components";
 import Backdrop from "../../Backdrop/backdrop.components";
+
 import "./main-navigation.styles.css";
 
 const MainNavigation = () => {
@@ -43,7 +44,7 @@ const MainNavigation = () => {
           <span />
         </button>
         <Link to="/" className="underline">
-          <h1 className="main-navigation__title">Event Hive</h1>
+          <img src="/images/EventHive.png"></img>
         </Link>
         <nav className="main-navigation__header-nav">
           <Navlinks />
