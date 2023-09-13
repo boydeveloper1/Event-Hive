@@ -24,6 +24,7 @@ export const useAuth = () => {
       JSON.stringify({
         userId: uid,
         token: token,
+        image: image,
         expiration: tokenExpirationDate.toISOString(),
       })
     );
@@ -59,6 +60,7 @@ export const useAuth = () => {
       login(
         storedData.userId,
         storedData.token,
+        storedData.image,
         new Date(storedData.expiration)
       );
     }

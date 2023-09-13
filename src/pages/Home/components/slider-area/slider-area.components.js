@@ -28,7 +28,10 @@ const CarouselComponent = ({ events }) => {
       <Grid container spacing={3} justifyContent="center" sx={styles.grid}>
         {data.map((item, index) => (
           <Grid key={index} item xs={12} sm={6} md={3}>
-            <Link style={{ textDecoration: "none" }} to={item.url}>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={`/event/category/${item.title}`}
+            >
               <Card sx={styles.card}>
                 <img
                   src={item.imageUrl}

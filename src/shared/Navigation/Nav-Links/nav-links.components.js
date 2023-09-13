@@ -30,12 +30,6 @@ const Navlinks = () => {
 
         {auth.isLoggedIn && (
           <li>
-            <NavLink to="/:userId/events">MY EVENTS</NavLink>
-          </li>
-        )}
-
-        {auth.isLoggedIn && (
-          <li>
             <Link to="/add-new-event" className="linkaa">
               <button>ADD EVENT</button>
             </Link>
@@ -45,28 +39,14 @@ const Navlinks = () => {
         {!auth.isLoggedIn && (
           <li>
             <Link to="/authentication">
-              <img
-                className="profile-avatar"
-                src={profileAvatar}
-                alt="Profile Avatar"
-              />
+              <img className="profile-avatar" src={profileAvatar} />
             </Link>
           </li>
         )}
-
         {auth.isLoggedIn && (
           <li>
-            <button onClick={auth.logout}>LOGOUT</button>
-          </li>
-        )}
-        {auth.isLoggedIn && (
-          <li>
-            <Link to="/dashboard">
-              <img
-                className="profile-avatar"
-                src={auth.image}
-                alt="Profile Avatar"
-              />
+            <Link to={`/${auth.userId}/dashboard`}>
+              <img className="profile-avatar" src={auth.image} />
             </Link>
           </li>
         )}

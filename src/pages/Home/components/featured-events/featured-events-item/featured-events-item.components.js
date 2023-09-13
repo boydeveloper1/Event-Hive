@@ -1,8 +1,5 @@
-// Basic react library
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-
-// material Ui
 import {
   Card,
   CardActionArea,
@@ -13,36 +10,40 @@ import {
   Grid,
   CardActions,
 } from "@mui/material";
-
 import {
   LocationOn,
   ShoppingBasket,
   Room,
   Event,
   Person,
+  Category, // Import the category icon
 } from "@mui/icons-material";
 
-// Components Import
 import MyButton from "../../../../../shared/Button/button.components";
 import Modal from "../../../../../shared/Modal/modal.components";
 import Map from "../../../../../shared/Map/map.components";
 import ErrorModal from "../../../../../shared/Error-Modal/error-modal.components";
 import LoadingSpinner from "../../../../../shared/Loading-Spinner/loading-spinner.components";
 import { useHttpClient } from "../../../../../shared/hooks/http-hook";
-
 import { styles } from "./featured-events-item.styles";
 
 const FeaturedEventsItem = ({ event }) => {
-  const { id, province, date, image, title, location, organizer, address } =
-    event;
+  const {
+    id,
+    province,
+    date,
+    image,
+    title,
+    location,
+    organizer,
+    address,
+    category, // Add category to the destructuring
+  } = event;
 
   const { isLoading, error, clearError } = useHttpClient();
-
-  // Some states for rendering - map && Errormodal
   const [showMap, setShowMap] = useState(false);
 
   const openMapHandler = () => setShowMap(true);
-
   const closeMapHandler = () => setShowMap(false);
 
   return (
@@ -96,6 +97,15 @@ const FeaturedEventsItem = ({ event }) => {
                 >
                   <Event sx={styles.event} />
                   {date}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                  sx={styles.date} // Use the same styling as date
+                >
+                  <Category sx={styles.category} />
+                  {category} {/* Display the category */}
                 </Typography>
                 <Typography
                   variant="body2"

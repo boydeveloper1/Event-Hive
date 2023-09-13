@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -11,6 +11,8 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+
+import { AuthContext } from "../context/auth-context";
 
 import { styles } from "./footer.styles";
 
@@ -30,10 +32,11 @@ const eventInfoLinks = [
 const lookingForHelpLinks = [
   { name: "FAQs", url: "", id: 1 },
   { name: "Privacy", url: "", id: 2 },
-  { name: "Terms and COondition", url: "", id: 3 },
+  { name: "Terms and Conditions", url: "", id: 3 },
 ];
 
 const Footer = () => {
+  const auth = useContext(AuthContext);
   return (
     <Box sx={styles.boxx}>
       <Grid container spacing={2}>

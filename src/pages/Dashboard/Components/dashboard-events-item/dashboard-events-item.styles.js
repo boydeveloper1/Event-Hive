@@ -1,7 +1,10 @@
+import { hover } from "@testing-library/user-event/dist/hover";
+
 export const styles = {
   card: {
-    maxWidth: 400,
+    maxWidth: 600,
     margin: "auto",
+    height: "500px",
     backGroundColor: "#white",
     mt: "3px",
     mb: "3px",
@@ -9,13 +12,11 @@ export const styles = {
   },
 
   cardContent: {
-    height: 200,
     marginBottom: "70px",
-
     color: "black",
   },
 
-  title: { fontWeight: "bold" },
+  title: { fontWeight: "bold", color: "black" },
 
   room: {
     fontSize: 25,
@@ -53,7 +54,13 @@ export const styles = {
   cardActions: {
     display: "flex",
     justifyContent: "space-between",
-    padding: "5% 5%",
+    padding: "5% 5% 5% 0%",
+  },
+
+  box: {
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "0% 5% 1% 0%",
   },
 
   buttonOne: {
@@ -62,6 +69,9 @@ export const styles = {
     backgroundColor: "transparent",
     border: "thick double #F5F5F5",
     color: "black",
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
   },
 
   buttonTwo: {
@@ -69,5 +79,28 @@ export const styles = {
     backgroundColor: "#FFCC00",
     color: "black",
     border: "thick double #FFCC00",
+    "&:hover": {
+      backgroundColor: "#FFCC00",
+    },
+  },
+
+  buttonThree: {
+    flex: 1,
+    backgroundColor: "#FFCC00",
+    color: "black",
+    border: "thick double #FFCC00",
+    marginRight: "3px",
+    "&:hover": {
+      backgroundColor: "#FFCC00",
+    },
+  },
+  buttonFour: {
+    flex: 1,
+    backgroundColor: "red",
+    color: "white",
+    border: "thick double red",
+    "&:hover": {
+      backgroundColor: "red",
+    },
   },
 };

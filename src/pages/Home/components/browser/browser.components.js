@@ -19,7 +19,6 @@ import { cardData } from "./browser-data";
 import { styles } from "./browser.styles";
 
 const BrowseByProvince = ({ events }) => {
-  // calculating the number of events in the province
   const calculateCategoryCount = (province) => {
     if (events) {
       return events.filter((event) => event.province === province).length;
@@ -39,7 +38,10 @@ const BrowseByProvince = ({ events }) => {
         <Grid container spacing={3} justifyContent="center">
           {cardData.map((card, index) => (
             <Grid item xs={12} sm={6} md={3} key={card.id}>
-              <Link style={{ textDecoration: "none" }} to={card.url}>
+              <Link
+                style={{ textDecoration: "none" }}
+                to={`/event/province/${card.title}`}
+              >
                 <Card key={card.id} sx={styles.card}>
                   <CardContent sx={styles.cardContent}>
                     <img
