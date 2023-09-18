@@ -7,7 +7,7 @@ import MyCard from "../../../../shared/Card/card-components";
 import MyButton from "../../../../shared/Button/button.components";
 import "./dashboard-events-list.styles.css";
 
-const DashboardEventsList = ({ items }) => {
+const DashboardEventsList = ({ items, onDeletePlace }) => {
   // If there is no event, display a card component to create a new event
   if (items.length === 0) {
     return (
@@ -23,7 +23,13 @@ const DashboardEventsList = ({ items }) => {
     <div className="event-list-dash">
       <Grid container spacing={2}>
         {items.map((event) => {
-          return <DashboardEventsItem key={event.id} event={event} />;
+          return (
+            <DashboardEventsItem
+              key={event.id}
+              event={event}
+              onDelete={onDeletePlace}
+            />
+          );
         })}
       </Grid>
     </div>

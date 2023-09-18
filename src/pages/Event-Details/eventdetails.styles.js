@@ -2,7 +2,7 @@ export const styles = {
   grid: {
     width: "90%",
     margin: "0 auto",
-    marginBottom: "7%",
+    marginBottom: "12%",
   },
   box1: {
     p: 2,

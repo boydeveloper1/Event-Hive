@@ -18,6 +18,7 @@ import { useHttpClient } from "../../../shared/hooks/http-hook";
 import { AuthContext } from "../../../shared/context/auth-context";
 
 import "./update-event.styles.css";
+import HeroHeader from "../../../shared/hero-header/hero-header.components";
 
 const UpdateEvent = () => {
   const ProvinceOptions = [
@@ -26,7 +27,6 @@ const UpdateEvent = () => {
     "New Brunswick",
     "Alberta",
     "Manitoba",
-    "Prince Edward Island",
     "Saskatchewan",
     "Nova Scotia",
     "Quebec",
@@ -36,17 +36,17 @@ const UpdateEvent = () => {
     "Entertainment",
     "Fashion and Beauty",
     "Education and Training",
-    "Business and Strategy",
-    "Sports and Travel",
+    "Technology and Innovation",
+    "Food and Culinary",
   ];
   const auth = useContext(AuthContext);
   const { isLoading, error, clearError, sendRequest } = useHttpClient();
-  const [loadedevent, setLoadedevent] = useState();
+  const [Loadedevent, setLoadedevent] = useState();
   const eventId = useParams().eventId;
   const navigate = useNavigate();
 
   // Initialized form data on mounting of the component before we fetch from db
-  const [formState, inputHandler, setFormData] = useForm(
+  const [formState, InputHandler, setFormData] = useForm(
     {
       title: {
         value: "",
@@ -123,6 +123,14 @@ const UpdateEvent = () => {
               value: responseData.event.date,
               isValid: true,
             },
+            startTime: {
+              value: responseData.event.startTime,
+              isValid: true,
+            },
+            endTime: {
+              value: responseData.event.endTime,
+              isValid: true,
+            },
             price: {
               value: responseData.event.price,
               isValid: true,
@@ -135,7 +143,7 @@ const UpdateEvent = () => {
     fetchevent();
   }, [sendRequest, eventId, setFormData]);
 
-  // Function that calls to the db
+  // this handler is used to send the patch request of the uodated form
   const eventUpdateSubmitHandler = async (event) => {
     event.preventDefault();
     try {
@@ -150,6 +158,8 @@ const UpdateEvent = () => {
           province: formState.input.province.value,
           address: formState.input.address.value,
           date: formState.input.date.value,
+          startTime: formState.input.startTime.value,
+          endTime: formState.input.endTime.value,
           price: formState.input.price.value,
         }),
         {
@@ -157,7 +167,7 @@ const UpdateEvent = () => {
           Authorization: "Bearer " + auth.token,
         }
       );
-      navigate("/" + auth.userId + "/events");
+      navigate(`/event/details/${eventId}`); //redirect to the edited event details page
     } catch (error) {}
   };
 
@@ -169,7 +179,7 @@ const UpdateEvent = () => {
     );
   }
 
-  if (!loadedevent && !error) {
+  if (!Loadedevent && !error) {
     return (
       <div className="center">
         <Card>
@@ -178,11 +188,12 @@ const UpdateEvent = () => {
       </div>
     );
   }
-
+  console.log(Loadedevent.category);
   return (
     <Fragment>
+      <HeroHeader text={"Update Event"} />
       <ErrorModal error={error} onClear={clearError} />
-      {!isLoading && loadedevent && (
+      {!isLoading && Loadedevent && (
         <form className="event-form" onSubmit={eventUpdateSubmitHandler}>
           <Input
             id="title"
@@ -191,8 +202,8 @@ const UpdateEvent = () => {
             label="Title"
             validators={[VALIDATOR_REQUIRE()]}
             errorText="Please enter a valid title"
-            onInput={inputHandler}
-            initialValue={loadedevent.title}
+            onInput={InputHandler}
+            initialValue={Loadedevent.title}
             initialValid={true}
           ></Input>
           <Input
@@ -202,8 +213,8 @@ const UpdateEvent = () => {
             label="Description"
             validators={[VALIDATOR_MINLENGTH(5)]}
             errorText="Please enter a valid description (min 5 characters)"
-            onInput={inputHandler}
-            initialValue={loadedevent.description}
+            onInput={InputHandler}
+            initialValue={Loadedevent.description}
             initialValid={true}
           ></Input>
           <Input
@@ -213,28 +224,28 @@ const UpdateEvent = () => {
             label="Organized by"
             validators={[VALIDATOR_REQUIRE]}
             errorText="Please enter a valid organizer."
-            initialValue={loadedevent.organizer}
-            onInput={inputHandler}
+            initialValue={Loadedevent.organizer}
+            onInput={InputHandler}
           />
           <Input
             id="category"
             element="select"
             options={EventOptions}
-            initialValue={loadedevent.category}
+            initialValue={Loadedevent.category}
             label="Event Category"
             validators={[VALIDATOR_REQUIRE]}
             errorText="Please enter a valid Province. "
-            onInput={inputHandler}
+            onInput={InputHandler}
           />
           <Input
             id="province"
             element="select"
             options={ProvinceOptions}
-            initialValue={loadedevent.province}
+            initialValue={Loadedevent.province}
             label="Province"
             validators={[VALIDATOR_REQUIRE]}
             errorText="Please enter a valid Province. "
-            onInput={inputHandler}
+            onInput={InputHandler}
           />
           <Input
             id="address"
@@ -243,8 +254,8 @@ const UpdateEvent = () => {
             label="Address"
             validators={[VALIDATOR_MINLENGTH()]}
             errorText="Please enter a valid address"
-            onInput={inputHandler}
-            initialValue={loadedevent.address}
+            onInput={InputHandler}
+            initialValue={Loadedevent.address}
             initialValid={true}
           ></Input>
           <Input
@@ -254,23 +265,45 @@ const UpdateEvent = () => {
             label="Date"
             validators={[VALIDATOR_MINLENGTH()]}
             errorText="Please enter a valid date"
-            onInput={inputHandler}
-            initialValue={loadedevent.date}
+            onInput={InputHandler}
+            initialValue={Loadedevent.date}
             initialValid={true}
           ></Input>
+          <Input
+            id="startTime"
+            element="input"
+            type="time"
+            label="Start Time"
+            validators={[VALIDATOR_REQUIRE]}
+            errorText="Please enter a valid Start Time."
+            onInput={InputHandler}
+            initialValue={Loadedevent.startTime}
+            initialValid={true}
+          />
+          <Input
+            id="endTime"
+            element="input"
+            type="time"
+            label="End Time"
+            validators={[VALIDATOR_REQUIRE]}
+            errorText="Please enter a valid End Time."
+            onInput={InputHandler}
+            initialValue={Loadedevent.endTime}
+            initialValid={true}
+          />
           <Input
             id="price"
             element="input"
             type="text"
             label="Price"
-            validators={[VALIDATOR_MINLENGTH()]}
+            validators={[VALIDATOR_REQUIRE]}
             errorText="Please enter a valid price"
-            onInput={inputHandler}
-            initialValue={loadedevent.price}
+            onInput={InputHandler}
+            initialValue={Loadedevent.price}
             initialValid={true}
           ></Input>
           <Button type="submit" disabled={!formState.isValid}>
-            UPDATE event
+            Update Event
           </Button>
         </form>
       )}

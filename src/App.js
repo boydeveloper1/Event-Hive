@@ -65,7 +65,7 @@ const App = () => {
         <Route path="/event/details/:id" element={<EventDetailPage />} />
         <Route path="/event/category/:category" element={<Categories />} />
         <Route path="/event/province/:province" element={<Provinces />} />
-        {/* <Route path="*" element={<Navigate replace to="/authentication" />} /> */}
+        <Route path="*" element={<Navigate replace to="/authentication" />} />
       </Fragment>
     );
   }

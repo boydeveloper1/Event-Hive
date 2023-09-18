@@ -18,7 +18,8 @@ const UserEvents = () => {
         const responseData = await sendRequest(
           `${process.env.REACT_APP_BACKEND_URL}/events/user/${auth.userId}`
         );
-        setLoadedEvents(responseData.events);
+        const myEvents = responseData.events.reverse();
+        setLoadedEvents(myEvents);
       } catch (error) {}
     };
     fetchEvents();
@@ -28,11 +29,11 @@ const UserEvents = () => {
 
   // filtering out the events that was deleted
 
-  // const eventDeletedHandler = (deletedEventId) => {
-  //   setLoadedEvents((prevevents) =>
-  //     prevevents.filter((event) => event.id !== deletedEventId)
-  //   );
-  // };
+  const eventDeletedHandler = (deletedEventId) => {
+    setLoadedEvents((prevevents) =>
+      prevevents.filter((event) => event.id !== deletedEventId)
+    );
+  };
 
   return (
     <Fragment>
@@ -43,7 +44,10 @@ const UserEvents = () => {
         </div>
       )}
       {!isLoading && loadedEvents && (
-        <DashboardEventsList items={loadedEvents} />
+        <DashboardEventsList
+          items={loadedEvents}
+          onDeletePlace={eventDeletedHandler}
+        />
       )}
     </Fragment>
   );

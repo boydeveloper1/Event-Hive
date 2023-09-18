@@ -2,10 +2,13 @@
 // token and userID from backend
 
 import { useState, useCallback, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 let logOutTimer;
 
 export const useAuth = () => {
+  const navigate = useNavigate();
+
   const [token, setToken] = useState(false);
   const [image, setImage] = useState(false);
   const [tokenExpirationDate, setTokenExpirationDate] = useState();
@@ -36,6 +39,7 @@ export const useAuth = () => {
     setUserId(null);
     setImage(null);
     localStorage.removeItem("userData");
+    navigate("/authentication");
   }, []);
 
   useEffect(() => {

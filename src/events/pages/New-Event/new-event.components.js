@@ -27,7 +27,6 @@ const NewEvent = () => {
     "New Brunswick",
     "Alberta",
     "Manitoba",
-    "Prince Edward Island",
     "Saskatchewan",
     "Nova Scotia",
     "Quebec",
@@ -37,8 +36,8 @@ const NewEvent = () => {
     "Entertainment",
     "Fashion and Beauty",
     "Education and Training",
-    "Food and Culinary",
     "Technology and Innovation",
+    "Food and Culinary",
   ];
   const auth = useContext(AuthContext);
   const { isLoading, error, clearError, sendRequest } = useHttpClient();
@@ -109,7 +108,7 @@ const NewEvent = () => {
       formData.append("endTime", formState.input.endTime.value);
       formData.append("price", formState.input.price.value);
       formData.append("image", formState.input.image.value);
-      await sendRequest(
+      const responseData = await sendRequest(
         process.env.REACT_APP_BACKEND_URL + "/events",
         "POST",
         formData,
@@ -117,7 +116,8 @@ const NewEvent = () => {
           Authorization: "Bearer " + auth.token,
         }
       );
-      navigate("/" + auth.userId + "/events");
+      console.log(responseData);
+      navigate(`/event/details/${responseData.event.id}`);
     } catch (error) {}
   };
 

@@ -16,6 +16,7 @@ const EventList = ({ items, onDeleteEvent }) => {
       </div>
     );
   }
+
   return (
     <ul className="event-list">
       {items.map((event) => {

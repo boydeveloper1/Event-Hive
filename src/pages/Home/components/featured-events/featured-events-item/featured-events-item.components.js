@@ -37,7 +37,8 @@ const FeaturedEventsItem = ({ event }) => {
     location,
     organizer,
     address,
-    category, // Add category to the destructuring
+    category,
+    price,
   } = event;
 
   const { isLoading, error, clearError } = useHttpClient();
@@ -57,7 +58,7 @@ const FeaturedEventsItem = ({ event }) => {
         footerClass="event-item__modal-actions"
         footer={<MyButton onClick={closeMapHandler}>Close</MyButton>}
       >
-        <div className="map-container">
+        <div style={{ height: "15rem", width: "100%" }}>
           <Map center={location} zoom={13} />
         </div>
       </Modal>
@@ -115,12 +116,22 @@ const FeaturedEventsItem = ({ event }) => {
                 >
                   Organized By:
                 </Typography>
-                <Typography component="span" sx={styles.organizer}>
-                  {organizer}
-                </Typography>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Typography component="span" sx={styles.organizer}>
+                    {organizer}
+                  </Typography>
+                  <Button sx={styles.buttonDisabled}>${price}</Button>
+                </div>
               </CardContent>
             </CardActionArea>
           </Link>
+
           <CardActions sx={styles.cardActions}>
             <Button
               sx={styles.buttonOne}

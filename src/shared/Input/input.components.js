@@ -83,7 +83,12 @@ const Input = ({
         min={min}
       />
     ) : element === "select" ? (
-      <select onChange={changeHandler} onBlur={touchHandler} id={id}>
+      <select
+        onChange={changeHandler}
+        onBlur={touchHandler}
+        id={id}
+        value={inputState.value}
+      >
         <option value="">--Please choose an option--</option>
         {options.map((option) => (
           <option key={option} value={option}>

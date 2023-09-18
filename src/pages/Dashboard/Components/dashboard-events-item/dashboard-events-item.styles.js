@@ -103,4 +103,14 @@ export const styles = {
       backgroundColor: "red",
     },
   },
+  buttonDisabled: {
+    border: "3px solid green",
+    color: "green",
+    marginRight: "60%",
+    marginTop: "2%",
+    "&:hover": {
+      backgroundColor: "#009B4D",
+      color: "white",
+    },
+  },
 };

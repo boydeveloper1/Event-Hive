@@ -1,9 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
   Card,
   Box,
-  CardActionArea,
   CardContent,
   CardMedia,
   Typography,
@@ -11,6 +10,7 @@ import {
   Grid,
   CardActions,
 } from "@mui/material";
+
 import {
   LocationOn,
   ShoppingBasket,
@@ -18,6 +18,7 @@ import {
   Event,
   Category,
   Delete,
+  ModeEditOutline,
 } from "@mui/icons-material";
 
 import MyButton from "../../../../shared/Button/button.components";
@@ -26,9 +27,10 @@ import Map from ".././../../../shared/Map/map.components";
 import ErrorModal from "../../../../shared/Error-Modal/error-modal.components";
 import LoadingSpinner from "../../../../shared/Loading-Spinner/loading-spinner.components";
 import { useHttpClient } from "../../../../shared/hooks/http-hook";
+import { AuthContext } from "../../../../shared/context/auth-context";
 import { styles } from "./dashboard-events-item.styles";
 
-const DashboardEventsItem = ({ event }) => {
+const DashboardEventsItem = ({ event, onDelete }) => {
   const {
     id,
     province,
@@ -38,14 +40,43 @@ const DashboardEventsItem = ({ event }) => {
     location,
     organizer,
     address,
-    category, // Add category to the destructuring
+    category,
+    price,
+    creator,
   } = event;
 
-  const { isLoading, error, clearError } = useHttpClient();
   const [showMap, setShowMap] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+
+  const { isLoading, error, clearError, sendRequest } = useHttpClient();
+
+  const auth = useContext(AuthContext);
 
   const openMapHandler = () => setShowMap(true);
   const closeMapHandler = () => setShowMap(false);
+
+  // to show modal before deleting
+  const showDeleteWarningHandler = () => {
+    setShowConfirmModal(true);
+  };
+
+  //  to unshow modal before deleting
+  const cancelDeleteHandler = () => {
+    setShowConfirmModal(false);
+  };
+
+  const confirmDeleteHandler = async () => {
+    setShowConfirmModal(false);
+    try {
+      await sendRequest(
+        process.env.REACT_APP_BACKEND_URL + `/events/${id}`,
+        "DELETE",
+        null,
+        { Authorization: "Bearer " + auth.token }
+      );
+      onDelete(id);
+    } catch (error) {}
+  };
 
   return (
     <Fragment>
@@ -58,10 +89,26 @@ const DashboardEventsItem = ({ event }) => {
         footerClass="event-item__modal-actions"
         footer={<MyButton onClick={closeMapHandler}>Close</MyButton>}
       >
-        <div className="map-container">
+        <div style={{ height: "15rem", width: "100%" }}>
           <Map center={location} zoom={13} />
         </div>
       </Modal>
+      <Modal
+        header="Are you sure you want to delete this event?"
+        footerClass="place-item__modal-actions"
+        show={showConfirmModal}
+        onCancel={cancelDeleteHandler}
+        footer={
+          <Fragment>
+            <MyButton inverse onClick={cancelDeleteHandler}>
+              CANCEL
+            </MyButton>
+            <MyButton danger onClick={confirmDeleteHandler}>
+              DELETE
+            </MyButton>
+          </Fragment>
+        }
+      ></Modal>
 
       <Grid item key={id} xs={12} sm={12} md={6}>
         <Card sx={styles.card}>
@@ -123,9 +170,17 @@ const DashboardEventsItem = ({ event }) => {
               >
                 Organized By:
               </Typography>
-              <Typography component="span" sx={styles.organizer}>
-                {organizer}
-              </Typography>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Typography component="span" sx={styles.organizer}>
+                  {organizer}
+                </Typography>
+                <Button sx={styles.buttonDisabled}>${price}</Button>
+              </div>
             </CardContent>
           </Link>
           <CardActions sx={styles.cardActions}>
@@ -146,21 +201,26 @@ const DashboardEventsItem = ({ event }) => {
             </Button>
           </CardActions>
           <Box sx={styles.box}>
-            <Button
-              sx={styles.buttonThree}
-              startIcon={<LocationOn />}
-              onClick={openMapHandler}
-              rel="noopener noreferrer"
-            >
-              Edit
-            </Button>
-            <Button
-              sx={styles.buttonFour}
-              startIcon={<Delete />}
-              color="primary"
-            >
-              Delete
-            </Button>
+            {auth.userId === creator && (
+              <Button
+                sx={styles.buttonThree}
+                startIcon={<ModeEditOutline />}
+                href={`/event/${id}`}
+                rel="noopener noreferrer"
+              >
+                Edit
+              </Button>
+            )}
+            {auth.userId === creator && (
+              <Button
+                sx={styles.buttonFour}
+                startIcon={<Delete />}
+                color="primary"
+                onClick={showDeleteWarningHandler}
+              >
+                Delete
+              </Button>
+            )}
           </Box>
         </Card>
       </Grid>

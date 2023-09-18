@@ -10,8 +10,8 @@ export const styles = {
 
   cardContent: {
     height: 200,
-    marginBottom: "70px",
-
+    pb: "3px",
+    marginBottom: "90px",
     color: "black",
   },
 
@@ -48,6 +48,15 @@ export const styles = {
     fontWeight: 700,
     fontSize: 19,
     color: "green",
+  },
+
+  buttonDisabled: {
+    border: "3px solid green",
+    color: "green",
+    "&:hover": {
+      backgroundColor: "#009B4D",
+      color: "white",
+    },
   },
 
   cardActions: {
