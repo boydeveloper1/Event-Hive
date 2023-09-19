@@ -19,6 +19,7 @@ import {
   Category,
   Delete,
   ModeEditOutline,
+  ShoppingBag,
 } from "@mui/icons-material";
 
 import MyButton from "../../../../shared/Button/button.components";
@@ -194,10 +195,10 @@ const DashboardEventsItem = ({ event, onDelete }) => {
             </Button>
             <Button
               sx={styles.buttonTwo}
-              startIcon={<ShoppingBasket />}
+              startIcon={<ShoppingBag />}
               color="primary"
             >
-              Buy Now
+              ADD TO CART
             </Button>
           </CardActions>
           <Box sx={styles.box}>

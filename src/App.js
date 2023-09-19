@@ -81,16 +81,14 @@ const App = () => {
         logout: logout,
       }}
     >
-      <main>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<MainNavigation />}>
-            {routes}
-          </Route>
-        </Routes>
-        <Footer />
-        <FooterCopyright />
-      </main>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<MainNavigation />}>
+          {routes}
+        </Route>
+      </Routes>
+      <Footer />
+      <FooterCopyright />
     </AuthContext.Provider>
   );
 };

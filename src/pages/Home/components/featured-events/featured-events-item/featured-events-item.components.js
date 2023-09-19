@@ -1,5 +1,7 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
+
 import { Link } from "react-router-dom";
+
 import {
   Card,
   CardActionArea,
@@ -10,13 +12,13 @@ import {
   Grid,
   CardActions,
 } from "@mui/material";
+
 import {
   LocationOn,
-  ShoppingBasket,
   Room,
   Event,
-  Person,
-  Category, // Import the category icon
+  Category,
+  ShoppingBag,
 } from "@mui/icons-material";
 
 import MyButton from "../../../../../shared/Button/button.components";
@@ -25,9 +27,16 @@ import Map from "../../../../../shared/Map/map.components";
 import ErrorModal from "../../../../../shared/Error-Modal/error-modal.components";
 import LoadingSpinner from "../../../../../shared/Loading-Spinner/loading-spinner.components";
 import { useHttpClient } from "../../../../../shared/hooks/http-hook";
+import { CartContext } from "../../../../../shared/context/cart-context";
+
 import { styles } from "./featured-events-item.styles";
 
 const FeaturedEventsItem = ({ event }) => {
+  const cart = useContext(CartContext);
+
+  //onClick function to add to cart
+  const forwardItemsToCart = () => cart.addItemToCart(event);
+
   const {
     id,
     province,
@@ -143,10 +152,11 @@ const FeaturedEventsItem = ({ event }) => {
             </Button>
             <Button
               sx={styles.buttonTwo}
-              startIcon={<ShoppingBasket />}
+              startIcon={<ShoppingBag />}
               color="primary"
+              onClick={forwardItemsToCart}
             >
-              Buy Now
+              ADD TO CART
             </Button>
           </CardActions>
         </Card>
