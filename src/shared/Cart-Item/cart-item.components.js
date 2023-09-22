@@ -3,11 +3,16 @@ import React from "react";
 import "./cart.item.styles.css";
 
 const CartItem = ({ cartItem }) => {
-  const { title, quantity } = cartItem;
+  const { title, quantity, image, price } = cartItem;
   return (
-    <div>
-      <h2>{title}</h2>
-      <h2>{quantity}</h2>
+    <div className="cart-item-container">
+      <img className="cart-Item-Image" src={image.url} alt={`${title}`} />
+      <div className="item-details">
+        <span className="name">{title}</span>
+        <span className="price">
+          {quantity} x ${price}
+        </span>
+      </div>
     </div>
   );
 };

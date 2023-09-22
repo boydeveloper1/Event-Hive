@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Grid, Typography, Box, Button, TextField } from "@mui/material";
 
 import ErrorModal from "../../shared/Error-Modal/error-modal.components";
 import LoadingSpinner from "../../shared/Loading-Spinner/loading-spinner.components";
-import { useHttpClient } from "../../shared/hooks/http-hook";
 import HeroHeader from "../../shared/hero-header/hero-header.components";
+import { useHttpClient } from "../../shared/hooks/http-hook";
+import { CartContext } from "../../shared/context/cart-context";
 
 import { styles } from "./eventdetails.styles";
 
@@ -13,6 +14,11 @@ const EventDetailPage = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [event, setEvent] = useState([]);
   const [ticketQuantity, setTicketQuantity] = useState(1);
+
+  const cart = useContext(CartContext);
+
+  //onClick function to add to cart
+  const forwardItemsToCart = () => cart.addItemToCart(event, ticketQuantity);
 
   const { id } = useParams();
 
@@ -156,8 +162,16 @@ const EventDetailPage = () => {
                 <Typography sx={styles.typography12} variant="h5">
                   Total Price: ${calculateSubtotal()}
                 </Typography>
-                <Button variant="contained" color="primary" sx={{ mt: 2 }}>
-                  BUY TICKET
+                <Button
+                  variant="contained"
+                  sx={{
+                    mt: 2,
+                    backgroundColor: "green",
+                    "&:hover": { backgroundColor: "black" },
+                  }}
+                  onClick={forwardItemsToCart}
+                >
+                  ADD TO CART
                 </Button>
               </Box>
             </Grid>

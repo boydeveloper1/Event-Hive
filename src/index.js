@@ -4,18 +4,19 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { ProductsProvider } from "./shared/context/product-context";
 import { CartProvider } from "./shared/context/cart-context";
+import { Elements } from "@stripe/react-stripe-js";
+import { stripePromise } from "./utils/stripe/stripe";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ProductsProvider>
-        <CartProvider>
+      <CartProvider>
+        <Elements stripe={stripePromise}>
           <App />
-        </CartProvider>
-      </ProductsProvider>
+        </Elements>
+      </CartProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

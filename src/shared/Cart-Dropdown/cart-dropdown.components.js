@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import "./cart-dropdown.styles.css";
 
@@ -45,7 +45,7 @@ const CartDropdown = () => {
           padding: "12px 44px",
         }}
         text={"Checkout"}
-        url={"/authentication"}
+        url={"/checkout"}
       />
     </div>
   );

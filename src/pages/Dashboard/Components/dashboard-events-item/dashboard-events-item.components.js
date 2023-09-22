@@ -1,5 +1,7 @@
 import React, { Fragment, useState, useContext } from "react";
+
 import { Link } from "react-router-dom";
+
 import {
   Card,
   Box,
@@ -13,7 +15,6 @@ import {
 
 import {
   LocationOn,
-  ShoppingBasket,
   Room,
   Event,
   Category,
@@ -29,6 +30,8 @@ import ErrorModal from "../../../../shared/Error-Modal/error-modal.components";
 import LoadingSpinner from "../../../../shared/Loading-Spinner/loading-spinner.components";
 import { useHttpClient } from "../../../../shared/hooks/http-hook";
 import { AuthContext } from "../../../../shared/context/auth-context";
+import { CartContext } from "../../../../shared/context/cart-context";
+
 import { styles } from "./dashboard-events-item.styles";
 
 const DashboardEventsItem = ({ event, onDelete }) => {
@@ -52,6 +55,10 @@ const DashboardEventsItem = ({ event, onDelete }) => {
   const { isLoading, error, clearError, sendRequest } = useHttpClient();
 
   const auth = useContext(AuthContext);
+  const cart = useContext(CartContext);
+
+  //onClick function to add to cart
+  const forwardItemsToCart = () => cart.addItemToCart(event);
 
   const openMapHandler = () => setShowMap(true);
   const closeMapHandler = () => setShowMap(false);
@@ -197,6 +204,7 @@ const DashboardEventsItem = ({ event, onDelete }) => {
               sx={styles.buttonTwo}
               startIcon={<ShoppingBag />}
               color="primary"
+              onClick={forwardItemsToCart}
             >
               ADD TO CART
             </Button>

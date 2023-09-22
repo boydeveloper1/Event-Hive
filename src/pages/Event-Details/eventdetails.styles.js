@@ -51,7 +51,7 @@ export const styles = {
   typography6: { mt: 2, whiteSpace: "pre-line" },
   box5: { p: 2, backgroundColor: "#FFCC02", marginBottom: "2%" },
   typography7: {
-    fontSize: "30px",
+    fontSize: "25px",
     fontWeight: "bold",
     color: "black",
   },
@@ -62,19 +62,22 @@ export const styles = {
     marginBottom: "2%",
   },
   typography9: {
-    fontSize: "30px",
+    fontSize: "25px",
     fontWeight: "bold",
     color: "black",
   },
   typography10: {
     fontSize: "20px",
-    fontWeight: "bold",
+    // fontWeight: "bold",
     color: "black",
+    mt: 1,
+    mb: 3,
   },
   box7: {
     display: "flex",
     alignItems: "center",
     mt: 1,
+    mb: 2,
   },
   textfield: {
     width: "200px",
@@ -83,12 +86,13 @@ export const styles = {
   box8: { p: 2, backgroundColor: "#FFCC02" },
   typography11: {
     fontSize: "20px",
-    fontWeight: "bold",
+    // fontWeight: "bold",
     color: "black",
   },
   typography12: {
     fontSize: "20px",
     fontWeight: "bold",
     color: "black",
+    mt: 2,
   },
 };

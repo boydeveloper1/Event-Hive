@@ -16,7 +16,7 @@
   animation: lds-dual-ring 1.2s linear infinite;
 }
 
-.loading-spinner__overlay {
+.loader {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -26,6 +26,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
 }
 
 @keyframes lds-dual-ring {
