@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
@@ -27,15 +28,25 @@ import Map from "../../../../../shared/Map/map.components";
 import ErrorModal from "../../../../../shared/Error-Modal/error-modal.components";
 import LoadingSpinner from "../../../../../shared/Loading-Spinner/loading-spinner.components";
 import { useHttpClient } from "../../../../../shared/hooks/http-hook";
+
 import { CartContext } from "../../../../../shared/context/cart-context";
+import { AuthContext } from "../../../../../shared/context/auth-context";
 
 import { styles } from "./featured-events-item.styles";
 
 const FeaturedEventsItem = ({ event }) => {
+  const navigate = useNavigate();
   const cart = useContext(CartContext);
+  const auth = useContext(AuthContext);
 
   //onClick function to add to cart
-  const forwardItemsToCart = () => cart.addItemToCart(event);
+  const forwardItemsToCart = () => {
+    if (auth.isLoggedIn) {
+      return cart.addItemToCart(event);
+    } else {
+      navigate("/authentication");
+    }
+  };
 
   const {
     id,
@@ -151,6 +162,7 @@ const FeaturedEventsItem = ({ event }) => {
               View on Map
             </Button>
             <Button
+              className="add-to-cart"
               sx={styles.buttonTwo}
               startIcon={<ShoppingBag />}
               color="primary"

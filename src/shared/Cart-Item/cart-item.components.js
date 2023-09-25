@@ -1,19 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  IconButton,
+} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { CartContext } from "../context/cart-context";
 
-import "./cart.item.styles.css";
+import { styles } from "./cart.item.styles";
 
 const CartItem = ({ cartItem }) => {
   const { title, quantity, image, price } = cartItem;
+  const cart = useContext(CartContext);
+
+  const clearItemHandler = () => cart.clearItemFromCart(cartItem);
+
   return (
-    <div className="cart-item-container">
-      <img className="cart-Item-Image" src={image.url} alt={`${title}`} />
-      <div className="item-details">
-        <span className="name">{title}</span>
-        <span className="price">
-          {quantity} x ${price}
-        </span>
-      </div>
-    </div>
+    <Card sx={styles.card}>
+      <CardMedia
+        component="img"
+        src={image.url}
+        alt={title}
+        sx={{ width: "30%", objectFit: "cover" }}
+      />
+      <CardContent sx={styles.cardContent}>
+        <div>
+          <Typography variant="h6" sx={styles.typography1}>
+            {title}
+          </Typography>
+          <Typography variant="body2" sx={styles.typography2}>
+            {quantity} x ${price}
+          </Typography>
+        </div>
+        <IconButton
+          className="add-to-cart"
+          onClick={clearItemHandler}
+          sx={styles.iconButton}
+        >
+          <DeleteIcon />
+        </IconButton>
+      </CardContent>
+    </Card>
   );
 };
 

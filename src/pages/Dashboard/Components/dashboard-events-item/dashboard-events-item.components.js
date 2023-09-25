@@ -1,5 +1,7 @@
 import React, { Fragment, useState, useContext } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 
 import {
@@ -54,11 +56,18 @@ const DashboardEventsItem = ({ event, onDelete }) => {
 
   const { isLoading, error, clearError, sendRequest } = useHttpClient();
 
+  const navigate = useNavigate();
   const auth = useContext(AuthContext);
   const cart = useContext(CartContext);
 
   //onClick function to add to cart
-  const forwardItemsToCart = () => cart.addItemToCart(event);
+  const forwardItemsToCart = () => {
+    if (auth.isLoggedIn) {
+      return cart.addItemToCart(event);
+    } else {
+      navigate("/authentication");
+    }
+  };
 
   const openMapHandler = () => setShowMap(true);
   const closeMapHandler = () => setShowMap(false);
@@ -201,6 +210,7 @@ const DashboardEventsItem = ({ event, onDelete }) => {
               View on Map
             </Button>
             <Button
+              className="add-to-cart"
               sx={styles.buttonTwo}
               startIcon={<ShoppingBag />}
               color="primary"

@@ -116,7 +116,7 @@ const NewEvent = () => {
           Authorization: "Bearer " + auth.token,
         }
       );
-      console.log(responseData);
+
       navigate(`/event/details/${responseData.event.id}`);
     } catch (error) {}
   };

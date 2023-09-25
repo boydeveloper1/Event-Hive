@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Fragment, useEffect, useState, lazy, Suspense } from "react";
+import React, { Fragment, useEffect, lazy, Suspense } from "react";
 
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
@@ -40,6 +40,7 @@ const FooterCopyright = lazy(() =>
   import("./shared/footer-copyright/footer-copyright.components")
 );
 const Checkout = lazy(() => import("./pages/Checkout/checkout.components"));
+const ErrorPage = lazy(() => import("./pages/404/404.components"));
 
 // takes user to top of page after navigation
 function ScrollToTop() {
@@ -72,6 +73,8 @@ const App = () => {
         <Route path="/event/details/:id" element={<EventDetailPage />} />
         <Route path="/event/category/:category" element={<Categories />} />
         <Route path="/event/province/:province" element={<Provinces />} />
+        <Route path="/404" element={<ErrorPage />} />
+        <Route path="*" element={<Navigate replace to="/404" />} />
       </Fragment>
     );
   } else {

@@ -1,13 +1,17 @@
 // this hook is used to manage authentication - Login function, Logout function and to get the
 // token and userID from backend
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { CartContext } from "../context/cart-context";
 
 let logOutTimer;
 
 export const useAuth = () => {
   const navigate = useNavigate();
+  const cart = useContext(CartContext);
+  const { setCartItems } = useContext(CartContext);
 
   const [token, setToken] = useState(false);
   const [image, setImage] = useState(false);
@@ -38,6 +42,7 @@ export const useAuth = () => {
     setTokenExpirationDate(null);
     setUserId(null);
     setImage(null);
+    cart.setIsCartOpen(false);
     localStorage.removeItem("userData");
     navigate("/authentication");
   }, []);

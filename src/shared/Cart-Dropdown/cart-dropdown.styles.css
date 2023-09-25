@@ -1,7 +1,7 @@
 .cart-dropdown-container {
   position: absolute;
+  height: 400px;
   width: 22%;
-  height: 550%;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -12,14 +12,21 @@
   z-index: 5;
 }
 
+.cart-items-container {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
 .empty-message {
   font-size: 18px;
   margin: auto auto;
 }
 
 .cart-items {
-  height: 100%;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+}
+
+.cart-items-container::-webkit-scrollbar {
+  width: 0; /* Hide the scrollbar for Chrome, Safari, and newer Edge */
 }

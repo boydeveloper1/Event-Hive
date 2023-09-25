@@ -47,6 +47,7 @@ const Dashboard = () => {
   const handleItemClick = (item) => {
     setSelectedItem(item);
 
+    // logout a user when the logout tab is clicked
     if (item === "Logout") {
       auth.logout();
       Navigate("/");

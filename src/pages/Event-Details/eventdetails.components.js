@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+
+import { useParams, useNavigate } from "react-router-dom";
 import { Grid, Typography, Box, Button, TextField } from "@mui/material";
 
 import ErrorModal from "../../shared/Error-Modal/error-modal.components";
@@ -7,6 +8,7 @@ import LoadingSpinner from "../../shared/Loading-Spinner/loading-spinner.compone
 import HeroHeader from "../../shared/hero-header/hero-header.components";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { CartContext } from "../../shared/context/cart-context";
+import { AuthContext } from "../../shared/context/auth-context";
 
 import { styles } from "./eventdetails.styles";
 
@@ -15,10 +17,18 @@ const EventDetailPage = () => {
   const [event, setEvent] = useState([]);
   const [ticketQuantity, setTicketQuantity] = useState(1);
 
+  const navigate = useNavigate();
+  const auth = useContext(AuthContext);
   const cart = useContext(CartContext);
 
   //onClick function to add to cart
-  const forwardItemsToCart = () => cart.addItemToCart(event, ticketQuantity);
+  const forwardItemsToCart = () => {
+    if (auth.isLoggedIn) {
+      return cart.addItemToCart(event);
+    } else {
+      navigate("/authentication");
+    }
+  };
 
   const { id } = useParams();
 
@@ -163,6 +173,7 @@ const EventDetailPage = () => {
                   Total Price: ${calculateSubtotal()}
                 </Typography>
                 <Button
+                  className="add-to-cart"
                   variant="contained"
                   sx={{
                     mt: 2,
