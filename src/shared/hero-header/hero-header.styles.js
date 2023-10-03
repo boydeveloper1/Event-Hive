@@ -2,15 +2,19 @@ export const styles = {
   image: {
     marginTop: "-10%",
     width: "100%",
-    height: "75Vh",
+    height: "63vh",
     backgroundColor: "green",
     filter: "brightness(60%)",
+    "@media (min-width: 100px) and (max-width: 900px)": {
+      height: "35vh",
+    },
   },
   box: {
     position: "relative",
     color: "#ffffff",
     textAlign: "center",
     padding: "40px 0",
+    height: "auto",
   },
   typography1: {
     position: "absolute",

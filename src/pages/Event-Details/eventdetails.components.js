@@ -24,7 +24,7 @@ const EventDetailPage = () => {
   //onClick function to add to cart
   const forwardItemsToCart = () => {
     if (auth.isLoggedIn) {
-      return cart.addItemToCart(event);
+      return cart.addItemToCart(event, ticketQuantity);
     } else {
       navigate("/authentication");
     }
@@ -46,7 +46,7 @@ const EventDetailPage = () => {
   }, [sendRequest, id]);
 
   const handleQuantityChange = (e) => {
-    const newQuantity = e.target.value;
+    const newQuantity = parseInt(e.target.value);
     setTicketQuantity(newQuantity);
   };
 

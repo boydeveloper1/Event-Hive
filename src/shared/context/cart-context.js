@@ -2,6 +2,8 @@ import React, { createContext, useState, useEffect } from "react";
 
 // function to add item and keep track of quantity of cart items
 const addCartItem = (cartItems, productToAdd, quantity) => {
+  const parsedQuantity = +quantity;
+
   // find if cartItems contains productToAdd
   const existingCartItem = cartItems.find((cartItem) => {
     return cartItem.id === productToAdd.id;
@@ -13,7 +15,8 @@ const addCartItem = (cartItems, productToAdd, quantity) => {
       return cartItem.id === productToAdd.id
         ? {
             ...cartItem,
-            quantity: cartItem.quantity + quantity || cartItem.quantity + 1,
+            quantity:
+              cartItem.quantity + parsedQuantity || cartItem.quantity + 1,
           }
         : cartItem;
     });

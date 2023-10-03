@@ -54,7 +54,7 @@ function ScrollToTop() {
 }
 
 const App = () => {
-  const { token, login, logout, userId, image } = useAuth();
+  const { token, login, logout, userId, image, name } = useAuth();
 
   let routes;
 
@@ -107,6 +107,7 @@ const App = () => {
           isLoggedIn: !!token,
           token: token,
           image: image,
+          name: name,
           userId: userId,
           login: login,
           logout: logout,
@@ -120,7 +121,7 @@ const App = () => {
             </Route>
           </Routes>
           <Footer />
-          <FooterCopyright />
+          {<FooterCopyright />}
         </main>
       </AuthContext.Provider>
     </Suspense>

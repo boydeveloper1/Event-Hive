@@ -4,6 +4,7 @@
 import { useState, useCallback, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
+//closing card dropdown when a user logouts
 import { CartContext } from "../context/cart-context";
 
 let logOutTimer;
@@ -11,17 +12,18 @@ let logOutTimer;
 export const useAuth = () => {
   const navigate = useNavigate();
   const cart = useContext(CartContext);
-  const { setCartItems } = useContext(CartContext);
 
   const [token, setToken] = useState(false);
   const [image, setImage] = useState(false);
+  const [name, setName] = useState(false);
   const [tokenExpirationDate, setTokenExpirationDate] = useState();
   const [userId, setUserId] = useState(false);
 
-  const login = useCallback((uid, token, image, expirationDate) => {
+  const login = useCallback((uid, image, name, token, expirationDate) => {
     setToken(token);
     setUserId(uid);
     setImage(image);
+    setName(name);
     const tokenExpirationDate =
       expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
     setTokenExpirationDate(tokenExpirationDate);
@@ -30,8 +32,9 @@ export const useAuth = () => {
       "userData",
       JSON.stringify({
         userId: uid,
-        token: token,
         image: image,
+        name: name,
+        token: token,
         expiration: tokenExpirationDate.toISOString(),
       })
     );
@@ -42,6 +45,7 @@ export const useAuth = () => {
     setTokenExpirationDate(null);
     setUserId(null);
     setImage(null);
+    setName(null);
     cart.setIsCartOpen(false);
     localStorage.removeItem("userData");
     navigate("/authentication");
@@ -68,8 +72,9 @@ export const useAuth = () => {
     ) {
       login(
         storedData.userId,
-        storedData.token,
         storedData.image,
+        storedData.name,
+        storedData.token,
         new Date(storedData.expiration)
       );
     } else {
@@ -77,5 +82,5 @@ export const useAuth = () => {
     }
   }, [login]);
 
-  return { token, login, logout, userId, image };
+  return { token, login, logout, userId, image, name };
 };

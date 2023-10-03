@@ -21,11 +21,11 @@ const Checkout = () => {
       <HeroHeader text={"Checkout"} />
       <Paper
         sx={{
-          width: "80%",
+          width: "90%",
           margin: "0 auto",
           padding: "20px",
+          // marginBottom: "50px",
           borderRadius: "10px",
-          mb: "5%",
         }}
       >
         <TableContainer>
@@ -49,8 +49,8 @@ const Checkout = () => {
         <Typography variant="h4" sx={{ marginTop: 3, textAlign: "right" }}>
           Total: ${cart.cartTotal}
         </Typography>
-        <PaymentForm />
       </Paper>
+      <PaymentForm />
     </>
   );
 };

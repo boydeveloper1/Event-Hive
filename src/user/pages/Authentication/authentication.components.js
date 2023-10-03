@@ -95,7 +95,12 @@ const Authentication = () => {
           { "Content-Type": "application/json" }
         );
         // once the user hit the (signup), then the login state changes to true
-        auth.login(responseData.userId, responseData.token, responseData.image);
+        auth.login(
+          responseData.userId,
+          responseData.image,
+          responseData.name,
+          responseData.token
+        );
         navigate("/"); //navigate to dashboard here
       } catch (err) {}
     } else {
@@ -112,7 +117,12 @@ const Authentication = () => {
         );
 
         // once the user hit the (login), then the login state changes to true
-        auth.login(responseData.userId, responseData.token, responseData.image);
+        auth.login(
+          responseData.userId,
+          responseData.image,
+          responseData.name,
+          responseData.token
+        );
 
         navigate("/");
       } catch (error) {}

@@ -10,12 +10,18 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { CartContext } from "../context/cart-context";
 
 import { styles } from "./cart.item.styles";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const CartItem = ({ cartItem }) => {
-  const { title, quantity, image, price } = cartItem;
+  const { title, quantity, image, price, id } = cartItem;
   const cart = useContext(CartContext);
+  const navigate = useNavigate();
 
   const clearItemHandler = () => cart.clearItemFromCart(cartItem);
+
+  const letsGo = () => {
+    navigate(`/event/details/${id}`);
+  };
 
   return (
     <Card sx={styles.card}>
@@ -24,7 +30,9 @@ const CartItem = ({ cartItem }) => {
         src={image.url}
         alt={title}
         sx={{ width: "30%", objectFit: "cover" }}
+        onClick={letsGo}
       />
+
       <CardContent sx={styles.cardContent}>
         <div>
           <Typography variant="h6" sx={styles.typography1}>

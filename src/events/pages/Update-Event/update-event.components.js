@@ -188,7 +188,6 @@ const UpdateEvent = () => {
       </div>
     );
   }
-  console.log(Loadedevent.category);
   return (
     <Fragment>
       <HeroHeader text={"Update Event"} />

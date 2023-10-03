@@ -1,64 +1,94 @@
 import React, { useContext, useState } from "react";
-
+import {
+  Button,
+  CircularProgress,
+  Container,
+  Grid,
+  Paper,
+  Typography,
+} from "@mui/material";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-
 import { useHttpClient } from "../hooks/http-hook";
 import { AuthContext } from "../context/auth-context";
 import { CartContext } from "../context/cart-context";
-
 import MyButton from "../Button/button.components";
 import ErrorModal from "../Error-Modal/error-modal.components";
 import LoadingSpinner from "../Loading-Spinner/loading-spinner.components";
-
-import "./payment-form.styles.css";
 import Modal from "../Modal/modal.components";
 
 const PaymentForm = () => {
   const [paymentSuccessful, setPaymentSuccessful] = useState(false);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  const [paymentResultError, setPaymentResultError] = useState("");
 
   const auth = useContext(AuthContext);
-
   const cart = useContext(CartContext);
 
-  const { sendRequest, isLoading, error, clearError } = useHttpClient();
+  const { sendRequest, isLoading } = useHttpClient();
   const stripe = useStripe();
   const elements = useElements();
 
-  //payment handler for sending stripe payment request to backend
+  // this fires for the payment intent after the oay button is clicked
   const paymentHandler = async (e) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
       return;
     }
-    // send request for payment intent
+
+    setIsProcessingPayment(true);
+
     try {
       const responseData = await sendRequest(
         process.env.REACT_APP_ASSET_URL + `/create-payment-intent`,
         "POST",
-        JSON.stringify({ amount: 2000 }),
+        JSON.stringify({
+          amount: cart.cartTotal * 100,
+          user: auth.userId,
+        }),
         { "Content-Type": "application/json" }
       );
-      // destructuring the client secret that stripe gives back
-      const { client_secret } = responseData.intent;
-      console.log(client_secret);
 
-      const paymentResult = await stripe.confirmCardPayment(client_secret, {
+      const clientSecret = responseData.clientSecret;
+
+      const paymentResult = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement),
           billing_details: {
-            name: "Adetayo Chukwudi",
+            name: auth.name,
           },
         },
       });
 
+      setIsProcessingPayment(false);
+
       if (paymentResult.error) {
-        alert(paymentResult.error);
+        setPaymentSuccessful(false);
+        setPaymentResultError(
+          `Hello ${
+            auth.name.split(" ")[0]
+          }, There appears to be an issue while processing your payment. This could be linked to the card information you provided. Kindly double-check that you have entered the correct test card details.`
+        );
       } else {
         if (paymentResult.paymentIntent.status === "succeeded") {
           setPaymentSuccessful(true);
-          // clears cart items after purchase
           cart.setCartItems([]);
+
+          // when the status of paymentmentsuccessful is true, this fires a post request to the backend and pushes the events bought
+          try {
+            const responseData = await sendRequest(
+              `${process.env.REACT_APP_BACKEND_URL}/events/${auth.userId}`,
+              "POST",
+              JSON.stringify({
+                event: cart.cartItems,
+                user: auth.userId,
+              }),
+              {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + auth.token,
+              }
+            );
+          } catch (error) {}
         }
       }
     } catch (error) {}
@@ -66,30 +96,131 @@ const PaymentForm = () => {
 
   return (
     <>
-      <ErrorModal error={error} onClear={clearError} />
-      {paymentSuccessful && (
-        <Modal
-          show={paymentSuccessful}
-          onCancel={() => setPaymentSuccessful(false)} // Add onCancel to close the modal
-          header={"Payment Successful!"}
-          footer={
-            <MyButton href={`/${auth.userId}/dashboard`}>Dashboard</MyButton>
-          }
-        >
-          <p>
-            Thank you for purchasing the ticket(s). You can view your purchased
-            tickets in your Dashboard, under "Bought Events"
-          </p>
-        </Modal>
-      )}
       {isLoading && <LoadingSpinner asOverlay />}
-      <div className="paymentContainer">
-        <form className="formContainer" onSubmit={paymentHandler}>
-          <h2>Credit Card Payment: </h2>
-          <CardElement />
-          <MyButton>Pay Now</MyButton>
-        </form>
-      </div>
+      <Container maxWidth="md" sx={{ mt: 4, mb: 9 }}>
+        <Paper elevation={3} sx={{ p: 4 }}>
+          <Typography variant="h6" gutterBottom>
+            Credit Card Payment
+          </Typography>
+          {!paymentSuccessful && (
+            <ErrorModal
+              error={paymentResultError}
+              onClear={() => {
+                setPaymentResultError(null);
+              }}
+            />
+          )}
+          <form onSubmit={paymentHandler}>
+            <CardElement sx={{ mt: 2 }} />
+            {isProcessingPayment ? (
+              <CircularProgress sx={{ mt: 2, color: "green" }} />
+            ) : (
+              <Button
+                type="submit"
+                variant="contained"
+                fullWidth
+                sx={{
+                  mt: 2,
+                  color: "white",
+                  backgroundColor: "green",
+                  "&:hover": {
+                    backgroundColor: "green",
+                  },
+                }}
+                disabled={
+                  !stripe || isProcessingPayment || cart.cartTotal === 0
+                }
+              >
+                {`Pay $${cart.cartTotal}`}
+              </Button>
+            )}
+          </form>
+          {paymentSuccessful && (
+            <Modal
+              show={paymentSuccessful}
+              onCancel={() => setPaymentSuccessful(false)}
+              header="Payment Successful!"
+              footer={
+                <MyButton href={`/${auth.userId}/dashboard`}>
+                  Dashboard
+                </MyButton>
+              }
+            >
+              <Typography>
+                Thank you for purchasing the ticket(s). You can view your
+                purchased tickets in your Dashboard, under "Purchased Events".
+              </Typography>
+            </Modal>
+          )}
+        </Paper>
+        <Container maxWidth="sm" sx={{ mt: 4 }}>
+          <Paper elevation={3} sx={{ p: 4 }}>
+            <Typography variant="h6" gutterBottom>
+              Payment Information
+            </Typography>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <Typography
+                  variant="body1"
+                  sx={{ fontWeight: "bold", color: "green" }}
+                >
+                  Stripe instance:
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography variant="body1">
+                  This Stripe instance is not in live mode, so we will utilize
+                  Stripe test cards.
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography
+                  variant="body1"
+                  sx={{ fontWeight: "bold", color: "green" }}
+                >
+                  Card Number:
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography variant="body1">4242 4242 4242 4242</Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography
+                  variant="body1"
+                  sx={{ fontWeight: "bold", color: "green" }}
+                >
+                  MM/YY:
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography variant="body1">0424</Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography
+                  variant="body1"
+                  sx={{ fontWeight: "bold", color: "green" }}
+                >
+                  CVV:
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography variant="body1">424</Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography
+                  variant="body1"
+                  sx={{ fontWeight: "bold", color: "green" }}
+                >
+                  Zip:
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography variant="body1">42424</Typography>
+              </Grid>
+            </Grid>
+          </Paper>
+        </Container>
+      </Container>
     </>
   );
 };

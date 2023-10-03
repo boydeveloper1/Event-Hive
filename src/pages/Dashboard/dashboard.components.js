@@ -13,11 +13,12 @@ import LoadingSpinner from "../../shared/Loading-Spinner/loading-spinner.compone
 import { Container, Grid, Paper, Typography, Box, Button } from "@mui/material";
 
 import UserEvents from "../../events/pages/User-Events/user-events.components";
+import BoughtEvents from "../../events/pages/Bought-Events/bought-events.components";
 
 const items = [
   { name: "Dashboard", color: "#e0e9fb" },
   { name: "Created Events", color: "#eedefa" },
-  { name: "Bought Events", color: "#e0edf3" },
+  { name: "Purchased Events", color: "#e0edf3" },
   { name: "Logout", color: "#f3eae7" },
 ];
 
@@ -27,6 +28,7 @@ const Dashboard = () => {
   const [selectedItem, setSelectedItem] = useState("Dashboard");
 
   const auth = useContext(AuthContext);
+
   const Navigate = useNavigate();
   const { loggedID } = useParams();
 
@@ -121,7 +123,7 @@ const Dashboard = () => {
                 </Typography>
                 <Typography variant="p">
                   From your account dashboard you can view your created event,
-                  update and delete them, manage your bought ticket. Other
+                  update and delete them, manage your purchased ticket. Other
                   features like editing billing address, password and general
                   account details coming soon.
                 </Typography>
@@ -129,13 +131,40 @@ const Dashboard = () => {
             )}
             {selectedItem === "Created Events" && loadedUser && (
               <Paper sx={{ p: 2, borderRadius: 1 }}>
+                <Typography
+                  variant="p"
+                  sx={{
+                    fontSize: "20px",
+                    color: "white",
+                    backgroundColor: "#f4743b",
+                    padding: "10px",
+                    borderRadius: "5px",
+                    boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+                    marginBottom: "5px",
+                  }}
+                >
+                  Here's a list of the events you've created!
+                </Typography>
                 <UserEvents />
               </Paper>
             )}
-            {selectedItem === "Bought Events" && (
+            {selectedItem === "Purchased Events" && (
               <Paper sx={{ p: 2, borderRadius: 1 }}>
-                <Typography variant="h6">Bought Events Content</Typography>
-                {/* Add your bought events content here */}
+                <Typography
+                  variant="p"
+                  sx={{
+                    fontSize: "20px",
+                    color: "white",
+                    backgroundColor: "#f4743b",
+                    padding: "10px",
+                    borderRadius: "5px",
+                    boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+                    marginBottom: "5%",
+                  }}
+                >
+                  Here are your purchased tickets.
+                </Typography>
+                <BoughtEvents />
               </Paper>
             )}
             {selectedItem === "Logout" &&

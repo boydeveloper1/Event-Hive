@@ -25,14 +25,14 @@ import {
   ShoppingBag,
 } from "@mui/icons-material";
 
-import MyButton from "../../../../shared/Button/button.components";
-import Modal from "../../../../shared/Modal/modal.components";
-import Map from ".././../../../shared/Map/map.components";
-import ErrorModal from "../../../../shared/Error-Modal/error-modal.components";
-import LoadingSpinner from "../../../../shared/Loading-Spinner/loading-spinner.components";
-import { useHttpClient } from "../../../../shared/hooks/http-hook";
-import { AuthContext } from "../../../../shared/context/auth-context";
-import { CartContext } from "../../../../shared/context/cart-context";
+import MyButton from "../../../../../shared/Button/button.components";
+import Modal from "../../../../../shared/Modal/modal.components";
+import Map from "../.././../../../shared/Map/map.components";
+import ErrorModal from "../../../../../shared/Error-Modal/error-modal.components";
+import LoadingSpinner from "../../../../../shared/Loading-Spinner/loading-spinner.components";
+import { useHttpClient } from "../../../../../shared/hooks/http-hook";
+import { AuthContext } from "../../../../../shared/context/auth-context";
+import { CartContext } from "../../../../../shared/context/cart-context";
 
 import { styles } from "./dashboard-events-item.styles";
 
