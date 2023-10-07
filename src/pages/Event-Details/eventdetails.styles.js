@@ -68,7 +68,6 @@ export const styles = {
   },
   typography10: {
     fontSize: "20px",
-    // fontWeight: "bold",
     color: "black",
     mt: 1,
     mb: 3,
@@ -86,7 +85,6 @@ export const styles = {
   box8: { p: 2, backgroundColor: "#FFCC02" },
   typography11: {
     fontSize: "20px",
-    // fontWeight: "bold",
     color: "black",
   },
   typography12: {
@@ -94,5 +92,10 @@ export const styles = {
     fontWeight: "bold",
     color: "black",
     mt: 2,
+  },
+  button: {
+    mt: 2,
+    backgroundColor: "green",
+    "&:hover": { backgroundColor: "black" },
   },
 };

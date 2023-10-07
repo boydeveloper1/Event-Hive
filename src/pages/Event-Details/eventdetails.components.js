@@ -175,11 +175,7 @@ const EventDetailPage = () => {
                 <Button
                   className="add-to-cart"
                   variant="contained"
-                  sx={{
-                    mt: 2,
-                    backgroundColor: "green",
-                    "&:hover": { backgroundColor: "black" },
-                  }}
+                  sx={styles.button}
                   onClick={forwardItemsToCart}
                 >
                   ADD TO CART

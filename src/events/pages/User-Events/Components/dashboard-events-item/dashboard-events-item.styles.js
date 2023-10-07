@@ -111,4 +111,11 @@ export const styles = {
       color: "white",
     },
   },
+  CardMedia: {
+    width: "40%",
+    height: "auto",
+    objectFit: "cover",
+    textAlign: "left",
+  },
+  CardContent: { display: "flex", flexDirection: "column", flexGrow: 1 },
 };

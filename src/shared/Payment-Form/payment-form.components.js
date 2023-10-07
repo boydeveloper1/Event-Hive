@@ -7,6 +7,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
+
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useHttpClient } from "../hooks/http-hook";
 import { AuthContext } from "../context/auth-context";
@@ -15,6 +16,8 @@ import MyButton from "../Button/button.components";
 import ErrorModal from "../Error-Modal/error-modal.components";
 import LoadingSpinner from "../Loading-Spinner/loading-spinner.components";
 import Modal from "../Modal/modal.components";
+
+import { styles } from "./payment-form.styles";
 
 const PaymentForm = () => {
   const [paymentSuccessful, setPaymentSuccessful] = useState(false);
@@ -97,8 +100,8 @@ const PaymentForm = () => {
   return (
     <>
       {isLoading && <LoadingSpinner asOverlay />}
-      <Container maxWidth="md" sx={{ mt: 4, mb: 9 }}>
-        <Paper elevation={3} sx={{ p: 4 }}>
+      <Container maxWidth="md" sx={styles.container1}>
+        <Paper elevation={3} sx={styles.paper}>
           <Typography variant="h6" gutterBottom>
             Credit Card Payment
           </Typography>
@@ -111,22 +114,15 @@ const PaymentForm = () => {
             />
           )}
           <form onSubmit={paymentHandler}>
-            <CardElement sx={{ mt: 2 }} />
+            <CardElement sx={styles.cardElement} />
             {isProcessingPayment ? (
-              <CircularProgress sx={{ mt: 2, color: "green" }} />
+              <CircularProgress sx={styles.circularProgress} />
             ) : (
               <Button
                 type="submit"
                 variant="contained"
                 fullWidth
-                sx={{
-                  mt: 2,
-                  color: "white",
-                  backgroundColor: "green",
-                  "&:hover": {
-                    backgroundColor: "green",
-                  },
-                }}
+                sx={styles.button}
                 disabled={
                   !stripe || isProcessingPayment || cart.cartTotal === 0
                 }
@@ -153,17 +149,14 @@ const PaymentForm = () => {
             </Modal>
           )}
         </Paper>
-        <Container maxWidth="sm" sx={{ mt: 4 }}>
-          <Paper elevation={3} sx={{ p: 4 }}>
+        <Container maxWidth="sm" sx={styles.container2}>
+          <Paper elevation={3} sx={styles.paper}>
             <Typography variant="h6" gutterBottom>
               Payment Information
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <Typography
-                  variant="body1"
-                  sx={{ fontWeight: "bold", color: "green" }}
-                >
+                <Typography variant="body1" sx={styles.typography}>
                   Stripe instance:
                 </Typography>
               </Grid>
@@ -174,10 +167,7 @@ const PaymentForm = () => {
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Typography
-                  variant="body1"
-                  sx={{ fontWeight: "bold", color: "green" }}
-                >
+                <Typography variant="body1" sx={styles.typography}>
                   Card Number:
                 </Typography>
               </Grid>
@@ -185,10 +175,7 @@ const PaymentForm = () => {
                 <Typography variant="body1">4242 4242 4242 4242</Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Typography
-                  variant="body1"
-                  sx={{ fontWeight: "bold", color: "green" }}
-                >
+                <Typography variant="body1" sx={styles.typography}>
                   MM/YY:
                 </Typography>
               </Grid>
@@ -196,10 +183,7 @@ const PaymentForm = () => {
                 <Typography variant="body1">0424</Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Typography
-                  variant="body1"
-                  sx={{ fontWeight: "bold", color: "green" }}
-                >
+                <Typography variant="body1" sx={styles.typography}>
                   CVV:
                 </Typography>
               </Grid>
@@ -207,10 +191,7 @@ const PaymentForm = () => {
                 <Typography variant="body1">424</Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Typography
-                  variant="body1"
-                  sx={{ fontWeight: "bold", color: "green" }}
-                >
+                <Typography variant="body1" sx={styles.typography}>
                   Zip:
                 </Typography>
               </Grid>

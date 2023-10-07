@@ -6,6 +6,7 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
 import LoadingSpinner from "./shared/Loading-Spinner/loading-spinner.components";
+import BlogPost from "./pages/Blog/Blog-Post/blog-post.components";
 
 // lazy loading
 
@@ -65,6 +66,7 @@ const App = () => {
         <Route path="/all-events" element={<Events />} />
         <Route path="/about-us" element={<About />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/blogpost/:blogId" element={<BlogPost />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/add-new-event" element={<NewEvent />} />
         <Route path="/checkout" element={<Checkout />} />
@@ -85,11 +87,13 @@ const App = () => {
         <Route path="/about-us" element={<About />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/blogpost/:blogId" element={<BlogPost />} />
         <Route path="/authentication" element={<Authentication />} />
         <Route path="/event/details/:id" element={<EventDetailPage />} />
         <Route path="/event/category/:category" element={<Categories />} />
         <Route path="/event/province/:province" element={<Provinces />} />
         <Route path="*" element={<Navigate replace to="/authentication" />} />
+        <Route path="/404" element={<ErrorPage />} />
       </Fragment>
     );
   }

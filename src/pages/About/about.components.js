@@ -1,40 +1,22 @@
 import React from "react";
-import { Box, Typography, Button, Grid, Paper } from "@mui/material";
+import { Box, Typography, Grid, Paper } from "@mui/material";
 import HeroHeader from "../../shared/hero-header/hero-header.components";
 import HomeButton from "../Home/components/button/button.components";
+
+import { styles } from "./about.styles";
 
 const About = () => {
   return (
     <>
       <HeroHeader text={"about us."} />
-      <Box
-        sx={{
-          textAlign: "left",
-          py: "2rem",
-          px: "8rem",
-          "@media (min-width: 100px) and (max-width: 900px)": {
-            px: "0rem",
-          },
-        }}
-      >
-        {/* First Section */}
+      <Box sx={styles.box1}>
         <Grid container spacing={2} alignItems="center">
           <Grid item xs={12} md={6}>
-            <Box elevation={3} sx={{ p: "2rem" }}>
-              <Typography
-                variant="body1"
-                sx={{ fontStyle: "italic", color: "#FECB00", fontSize: "24px" }}
-              >
+            <Box elevation={3} sx={styles.box2}>
+              <Typography variant="body1" sx={styles.typography1}>
                 Welcome
               </Typography>
-              <Typography
-                variant="h2"
-                sx={{
-                  fontWeight: "bold",
-                  lineHeight: "3.9rem",
-                  marginBottom: "2%",
-                }}
-              >
+              <Typography variant="h2" sx={styles.typography2}>
                 We Inspire People to Go Out More
               </Typography>
               <Typography variant="p">
@@ -44,7 +26,7 @@ const About = () => {
                 communicate, inspired find.
               </Typography>
               <HomeButton
-                url={"/all-evenbts"}
+                url={"/all-events"}
                 text={"SEE ALL EVENT"}
                 boxStyles={{ mt: "30px" }}
                 buttonStyles={{
@@ -59,37 +41,23 @@ const About = () => {
                   backgroundColor: "#009B4D",
                   border: "double 4px #009B4D",
                   color: "white",
-                  fontSize: "1.2rem",
-                  padding: "10px 25px",
+                  fontSize: "1rem",
+                  padding: "9px 25px",
                 }}
               />
             </Box>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Box sx={{ overflow: "hidden" }}>
+            <Box sx={styles.box3}>
               <img
                 src="/images/about.jpg"
-                alt="Square Image"
+                alt="Square"
                 style={{ width: "65%", height: "100%" }}
               />
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(250%, 280%)",
-                  borderRadius: "50%",
-                  backgroundColor: "rgba(0, 0, 0, 0.5)",
-                  width: "150px",
-                  height: "150px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
+              <Box sx={styles.box4}>
                 <img
                   src="https://plus.unsplash.com/premium_photo-1661315452408-ab1839e8d468?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
-                  alt="Circular Image"
+                  alt="Circular "
                   style={{ width: "200%", height: "200%", borderRadius: "50%" }}
                 />
               </Box>
@@ -97,101 +65,55 @@ const About = () => {
           </Grid>
         </Grid>
 
-        {/* Second Section */}
-        <Grid
-          container
-          spacing={2}
-          sx={{
-            mt: "6rem",
-            px: "8rem",
-            "@media (min-width: 100px) and (max-width: 900px)": {
-              px: "2rem",
-              mt: "3rem",
-            },
-          }}
-        >
-          {/* Box 1 */}
+        <Grid container spacing={2} sx={styles.grid1}>
           <Grid item xs={12} sm={4}>
-            <Paper
-              elevation={3}
-              sx={{
-                p: "1.5rem",
-                textAlign: "left",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
+            <Paper elevation={3} sx={styles.paper1}>
               <img
                 src="https://demo.themewinter.com/wp/eventplace/wp-content/uploads/2022/12/event_organizers.png"
                 alt="Image 1"
                 style={{ width: "12%" }}
               />
               <div style={{ marginLeft: "1rem" }}>
-                <Typography
-                  sx={{ fontWeight: "bold", fontSize: "40px" }}
-                  variant="h5"
-                >
+                <Typography sx={styles.typography3} variant="h5">
                   40k+
                 </Typography>
-                <Typography sx={{ fontSize: "20px" }} variant="subtitle2">
+                <Typography sx={styles.typography4} variant="subtitle2">
                   Event Organizers
                 </Typography>
               </div>
             </Paper>
           </Grid>
-          {/* Box 2 */}
+
           <Grid item xs={12} sm={4}>
-            <Paper
-              elevation={3}
-              sx={{
-                p: "1.5rem",
-                textAlign: "left",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
+            <Paper elevation={3} sx={styles.paper}>
               <img
                 src="https://demo.themewinter.com/wp/eventplace/wp-content/uploads/2022/12/event_host.png"
-                alt="Image 1"
+                alt=" 1"
                 style={{ width: "12%" }}
               />
               <div style={{ marginLeft: "1rem" }}>
-                <Typography
-                  sx={{ fontWeight: "bold", fontSize: "40px" }}
-                  variant="h5"
-                >
+                <Typography sx={styles.typography3} variant="h5">
                   29k+
                 </Typography>
-                <Typography sx={{ fontSize: "20px" }} variant="subtitle2">
+                <Typography sx={styles.typography4} variant="subtitle2">
                   Event Hosted
                 </Typography>
               </div>
             </Paper>
           </Grid>
-          {/* Box 3 */}
+
           <Grid item xs={12} sm={4}>
-            <Paper
-              elevation={3}
-              sx={{
-                p: "1.5rem",
-                textAlign: "left",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
+            <Paper elevation={3} sx={styles.paper}>
               <img
                 src="https://demo.themewinter.com/wp/eventplace/wp-content/uploads/2022/12/tickets.png"
-                alt="Image 1"
+                alt=" 1"
                 style={{ width: "12%" }}
               />
               <div style={{ marginLeft: "1rem" }}>
-                <Typography
-                  sx={{ fontWeight: "bold", fontSize: "40px" }}
-                  variant="h5"
-                >
+                <Typography sx={styles.typography3} variant="h5">
                   11.4m+
                 </Typography>
-                <Typography sx={{ fontSize: "20px" }} variant="subtitle2">
+                <Typography sx={styles.typography4} variant="subtitle2">
                   Tickets Sold
                 </Typography>
               </div>
@@ -199,52 +121,23 @@ const About = () => {
           </Grid>
         </Grid>
 
-        {/* Third Section */}
-        <Box
-          sx={{
-            textAlign: "left",
-            py: "2rem",
-            px: "8rem",
-            "@media (min-width: 100px) and (max-width: 900px)": {
-              px: "3rem",
-            },
-          }}
-        >
-          <Grid
-            container
-            spacing={2}
-            alignItems="center"
-            sx={{ marginTop: "3%" }}
-          >
+        <Box sx={styles.box5}>
+          <Grid container spacing={2} alignItems="center" sx={styles.grid2}>
             <Grid item xs={12} md={6}>
-              <Box sx={{ overflow: "hidden" }}>
+              <Box sx={styles.box6}>
                 <img
                   src="https://images.unsplash.com/photo-1506485927884-1900e37ac5ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2532&q=80"
-                  alt="Square Image"
+                  alt="Square "
                   style={{ width: "75%", height: "100%" }}
                 />
               </Box>
             </Grid>
             <Grid item xs={12} md={6}>
               <Box elevation={3}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontStyle: "italic",
-                    color: "#FECB00",
-                    fontSize: "24px",
-                  }}
-                >
+                <Typography variant="body1" sx={styles.typography1}>
                   Organizers
                 </Typography>
-                <Typography
-                  variant="h2"
-                  sx={{
-                    fontWeight: "bold",
-                    lineHeight: "3.9rem",
-                    marginBottom: "2%",
-                  }}
-                >
+                <Typography variant="h2" sx={styles.typography6}>
                   Event Organizers
                 </Typography>
                 <Typography variant="p">
@@ -254,7 +147,7 @@ const About = () => {
                   for business, wher people communicate, inspired find.
                 </Typography>
                 <HomeButton
-                  url={"/all-evenbts"}
+                  url={"/contact-us"}
                   text={"CONTACT US"}
                   boxStyles={{ mt: "30px" }}
                   buttonStyles={{
@@ -269,92 +162,92 @@ const About = () => {
                     backgroundColor: "transparent",
                     border: "double 4px #009B4D",
                     color: "#009B4D",
-                    fontSize: "1.2rem",
-                    padding: "10px 25px",
+                    fontSize: "1rem",
+                    padding: "9px 25px",
                   }}
                 />
               </Box>
             </Grid>
           </Grid>
         </Box>
-        {/* Fourth Section */}
-        <Box
-          sx={{
-            mt: "3rem",
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
-          <Typography variant="subtitle2">Work Plan</Typography>
-          <Typography variant="h3">Discover How We Work</Typography>
-          <Grid container spacing={2}>
+
+        <Box sx={styles.box7}>
+          <Typography variant="body1" sx={styles.typography1}>
+            Work Plan
+          </Typography>
+          <Typography variant="h2" sx={styles.typography7}>
+            Discover How We Work
+          </Typography>
+          <Grid container spacing={5}>
             {/* Box 1 */}
             <Grid item xs={12} sm={3}>
-              <Paper elevation={3} sx={{ p: "1.5rem", textAlign: "center" }}>
+              <Paper elevation={3} sx={styles.paper2}>
                 <img
-                  src="https://via.placeholder.com/200x200"
-                  alt="Image 1"
-                  style={{ width: "100%" }}
+                  src="https://cdn.iconscout.com/icon/premium/png-512-thumb/sign-up-2887083-2396452.png?f=webp&w=512"
+                  alt=" 1"
+                  style={{ width: "30%" }}
                 />
-                <Typography variant="h5">Box 1</Typography>
-                <Typography variant="subtitle2">Subtitle for Box 1</Typography>
+                <Typography sx={styles.typography8} variant="h5">
+                  Sign up
+                </Typography>
+                <Typography variant="subtitle2">
+                  Create an account to enjoy all features of this application.
+                </Typography>
               </Paper>
             </Grid>
             {/* Box 2 */}
             <Grid item xs={12} sm={3}>
-              <Paper elevation={3} sx={{ p: "1.5rem", textAlign: "center" }}>
+              <Paper elevation={3} sx={styles.paper2}>
                 <img
-                  src="https://via.placeholder.com/200x200"
+                  src="https://cdn.iconscout.com/icon/free/png-512/free-add-event-8-1131249.png?f=webp&w=512"
                   alt="Image 2"
-                  style={{ width: "100%" }}
+                  style={{ width: "30%" }}
                 />
-                <Typography variant="h5">Box 2</Typography>
-                <Typography variant="subtitle2">Subtitle for Box 2</Typography>
+                <Typography sx={styles.typography8} variant="h5">
+                  Add your Event
+                </Typography>
+                <Typography variant="subtitle2">
+                  Add an event to start monetizing immediately.
+                </Typography>
               </Paper>
             </Grid>
             {/* Box 3 */}
             <Grid item xs={12} sm={3}>
-              <Paper elevation={3} sx={{ p: "1.5rem", textAlign: "center" }}>
+              <Paper elevation={3} sx={styles.paper2}>
                 <img
-                  src="https://via.placeholder.com/200x200"
+                  src="https://cdn.iconscout.com/icon/premium/png-512-thumb/modify-4114221-3416168.png?f=webp&w=512"
                   alt="Image 3"
-                  style={{ width: "100%" }}
+                  style={{ width: "30%" }}
                 />
-                <Typography variant="h5">Box 3</Typography>
-                <Typography variant="subtitle2">Subtitle for Box 3</Typography>
+                <Typography sx={styles.typography8} variant="h5">
+                  Modify Event
+                </Typography>
+                <Typography variant="subtitle2">
+                  Wrong details on your event? Edit at ease.
+                </Typography>
               </Paper>
             </Grid>
             {/* Box 4 */}
             <Grid item xs={12} sm={3}>
-              <Paper elevation={3} sx={{ p: "1.5rem", textAlign: "center" }}>
+              <Paper elevation={3} sx={styles.paper2}>
                 <img
-                  src="https://via.placeholder.com/200x200"
+                  src="https://cdn.iconscout.com/icon/premium/png-512-thumb/purchase-19-1072417.png?f=webp&w=512"
                   alt="Image 4"
-                  style={{ width: "100%" }}
+                  style={{ width: "30%" }}
                 />
-                <Typography variant="h5">Box 4</Typography>
-                <Typography variant="subtitle2">Subtitle for Box 4</Typography>
+                <Typography sx={styles.typography8} variant="h5">
+                  Purchase Ticket
+                </Typography>
+                <Typography variant="subtitle2">
+                  Surf our hot catalogue of events and make a purchase.
+                </Typography>
               </Paper>
             </Grid>
           </Grid>
         </Box>
 
-        {/* Fifth Section */}
-        <Box sx={{ mt: "3rem" }}>
-          <Box
-            elevation={3}
-            sx={{
-              p: "2rem",
-              textAlign: "center",
-              width: "100%",
-              marginBottom: "-15%",
-              zIndex: 1,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-          >
+        <Box sx={styles.box8}>
+          <Box elevation={3} sx={styles.box9}>
             <img
               src="/images/eventus.jpg"
               alt="Rectangular Image"

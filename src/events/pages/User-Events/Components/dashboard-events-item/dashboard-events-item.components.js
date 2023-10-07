@@ -139,16 +139,9 @@ const DashboardEventsItem = ({ event, onDelete }) => {
               height="200"
               image={image.url}
               alt={title}
-              sx={{
-                width: "40%",
-                height: "auto",
-                objectFit: "cover",
-                textAlign: "left",
-              }}
+              sx={styles.CardMedia}
             />
-            <CardContent
-              sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}
-            >
+            <CardContent sx={styles.CardContent}>
               <Typography
                 gutterBottom
                 variant="h5"

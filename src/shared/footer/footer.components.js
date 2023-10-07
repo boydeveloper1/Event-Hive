@@ -38,7 +38,7 @@ const lookingForHelpLinks = [
 const Footer = () => {
   const auth = useContext(AuthContext);
   return (
-    <Box sx={styles.boxx}>
+    <Box sx={styles.box1}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={5} sx={styles.grid} key={1}>
           <Link to={"/"}>
@@ -49,7 +49,7 @@ const Footer = () => {
             />
           </Link>
           <Typography variant="body1">
-            Whether you want to host a single or multi-events, EventHive is your
+            Whether you want to host a single or multi-events, EventHive is the
             best choice for you.
           </Typography>
           <Typography variant="h6" sx={styles.typography1}>
@@ -65,32 +65,19 @@ const Footer = () => {
         </Grid>
         <Grid item xs={12} md={7} sx={styles.grid1} key={2}>
           <div style={{ marginBottom: "3%" }}>
-            <Box
-              sx={{
-                display: "inline-block",
-                verticalAlign: "top",
-                "@media (min-width: 100px) and (max-width: 900px)": {
-                  marginLeft: "3%",
-                },
-              }}
-            >
-              <Typography variant="h6" sx={{ marginBottom: "4%" }}>
+            <Box sx={styles.box2}>
+              <Typography variant="h6" sx={styles.typography6}>
                 FOLLOW US:
               </Typography>
-              <InstagramIcon sx={{ marginRight: 2 }} />
-              <FacebookIcon sx={{ marginRight: 2 }} />
-              <TwitterIcon sx={{ marginRight: 2 }} />
-              <LinkedInIcon sx={{ marginRight: 2 }} />
+              <InstagramIcon sx={styles.icon} />
+              <FacebookIcon sx={styles.icon} />
+              <TwitterIcon sx={styles.icon} />
+              <LinkedInIcon sx={styles.icon} />
               <YouTubeIcon />
             </Box>
 
-            <Box sx={styles.box}>
-              <Typography
-                variant="h6"
-                sx={{
-                  marginBottom: "1%",
-                }}
-              >
+            <Box sx={styles.box3}>
+              <Typography variant="h6" sx={styles.typography7}>
                 Useful Links
               </Typography>
               {usefulLinks.map((links) => (
@@ -114,16 +101,7 @@ const Footer = () => {
               <Typography variant="h6" sx={styles.typography4}>
                 The brand
               </Typography>
-              <Typography
-                variant="p"
-                component="p"
-                sx={{
-                  marginBottom: "4%",
-                  lineHeight: "23px",
-                  fontSize: "15px",
-                  paddingRight: "14px",
-                }}
-              >
+              <Typography variant="p" component="p" sx={styles.typography8}>
                 Connecting organizers, attendees, and presenters for
                 unforgettable experiences.
               </Typography>

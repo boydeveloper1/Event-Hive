@@ -29,7 +29,7 @@ const CartItem = ({ cartItem }) => {
         component="img"
         src={image.url}
         alt={title}
-        sx={{ width: "30%", objectFit: "cover" }}
+        sx={styles.cardMedia}
         onClick={letsGo}
       />
 

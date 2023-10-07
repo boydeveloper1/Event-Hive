@@ -18,17 +18,8 @@ import Map from "../../../../../shared/Map/map.components";
 import { styles } from "./dashboard-boughtEvents-item.styles";
 
 const DashboardBoughtEventsItem = ({ event }) => {
-  const {
-    date,
-    image,
-    title,
-    location,
-    address,
-    category,
-    organizer,
-    price,
-    quantity,
-  } = event;
+  const { date, image, title, location, address, category, price, quantity } =
+    event;
 
   const [showMap, setShowMap] = useState(false);
 
@@ -63,9 +54,7 @@ const DashboardBoughtEventsItem = ({ event }) => {
               alt={title}
               sx={styles.cardMedia}
             />
-            <CardContent
-              sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}
-            >
+            <CardContent sx={styles.cardContent}>
               <Typography
                 gutterBottom
                 variant="h5"

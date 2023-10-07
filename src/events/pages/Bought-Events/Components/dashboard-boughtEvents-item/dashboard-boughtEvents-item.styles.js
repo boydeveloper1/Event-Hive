@@ -127,4 +127,5 @@ export const styles = {
     display: "inline-block",
     marginLeft: "4%",
   },
+  cardContent: { display: "flex", flexDirection: "column", flexGrow: 1 },
 };

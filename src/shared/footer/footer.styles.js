@@ -1,5 +1,5 @@
 export const styles = {
-  boxx: { right: 0, left: 0, bottom: 0, position: "relative" },
+  box1: { right: 0, left: 0, bottom: 0, position: "relative" },
   grid: {
     background: "linear-gradient(to right, #006400, #000000)",
     color: "white",
@@ -13,7 +13,7 @@ export const styles = {
     color: "white",
     padding: "4% 4% 5% !important",
   },
-  box: {
+  box3: {
     display: "inline-block",
     verticalAlign: "top",
     marginLeft: "20%",
@@ -59,5 +59,23 @@ export const styles = {
     fontWeight: "light",
     fontSize: "16px",
     paddingTop: "5px",
+  },
+  box2: {
+    display: "inline-block",
+    verticalAlign: "top",
+    "@media (min-width: 100px) and (max-width: 900px)": {
+      marginLeft: "3%",
+    },
+  },
+  typography6: { marginBottom: "4%" },
+  icon: { marginRight: 2 },
+  typography7: {
+    marginBottom: "1%",
+  },
+  typography8: {
+    marginBottom: "4%",
+    lineHeight: "23px",
+    fontSize: "15px",
+    paddingRight: "14px",
   },
 };

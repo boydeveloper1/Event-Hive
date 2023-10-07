@@ -13,4 +13,5 @@ export const styles = {
   typography1: { fontSize: "13px" },
   typography2: { fontSize: "14px" },
   iconButton: { alignSelf: "flex-start" },
+  cardMedia: { width: "30%", objectFit: "cover" },
 };

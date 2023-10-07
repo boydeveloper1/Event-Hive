@@ -1,28 +1,18 @@
 import React from "react";
 import { Box, Button, Typography } from "@mui/material";
-import { purple } from "@mui/material/colors";
 
-const primary = purple[500]; // #f44336
+import { styles } from "./404.styles";
 
 const ErrorPage = () => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        minHeight: "100vh",
-        backgroundColor: primary,
-      }}
-    >
-      <Typography variant="h1" style={{ color: "white" }}>
+    <Box sx={styles.box}>
+      <Typography variant="h1" style={styles.typography}>
         404
       </Typography>
-      <Typography variant="h6" style={{ color: "white" }}>
+      <Typography variant="h6" style={styles.typography}>
         The page you’re looking for doesn’t exist.
       </Typography>
-      <Button sx={{ mt: "20px" }} variant="contained" href={"/"}>
+      <Button sx={styles.button} variant="contained" href={"/"}>
         Back Home
       </Button>
     </Box>

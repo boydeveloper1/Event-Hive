@@ -13,21 +13,15 @@ import TableRow from "@mui/material/TableRow";
 import CheckoutItem from "../../shared/Checkout-Item/checkout-item.components";
 import PaymentForm from "../../shared/Payment-Form/payment-form.components";
 
+import { styles } from "./checkout.styles";
+
 const Checkout = () => {
   const cart = useContext(CartContext);
 
   return (
     <>
       <HeroHeader text={"Checkout"} />
-      <Paper
-        sx={{
-          width: "90%",
-          margin: "0 auto",
-          padding: "20px",
-          // marginBottom: "50px",
-          borderRadius: "10px",
-        }}
-      >
+      <Paper sx={styles.paper}>
         <TableContainer>
           <Table>
             <TableHead>
@@ -46,7 +40,7 @@ const Checkout = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <Typography variant="h4" sx={{ marginTop: 3, textAlign: "right" }}>
+        <Typography variant="h4" sx={styles.typography}>
           Total: ${cart.cartTotal}
         </Typography>
       </Paper>

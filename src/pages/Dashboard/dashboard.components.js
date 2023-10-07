@@ -15,6 +15,8 @@ import { Container, Grid, Paper, Typography, Box, Button } from "@mui/material";
 import UserEvents from "../../events/pages/User-Events/user-events.components";
 import BoughtEvents from "../../events/pages/Bought-Events/bought-events.components";
 
+import { styles } from "./dashboard.styles";
+
 const items = [
   { name: "Dashboard", color: "#e0e9fb" },
   { name: "Created Events", color: "#eedefa" },
@@ -70,7 +72,7 @@ const Dashboard = () => {
           src="https://images.unsplash.com/photo-1516796181074-bf453fbfa3e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
         />
       )}
-      <Container maxWidth="xl" sx={{ mb: "10%" }}>
+      <Container maxWidth="xl" sx={styles.container}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
             {items.map((item) => (
@@ -100,15 +102,11 @@ const Dashboard = () => {
             ))}
           </Grid>
 
-          {/* Right Column */}
           <Grid item xs={12} md={9}>
             {/* Content for the selected item */}
             {selectedItem === "Dashboard" && loadedUser && (
-              <Box sx={{ p: 2, borderRadius: 1 }}>
-                <Typography
-                  variant="h6"
-                  sx={{ color: "#268901", marginBottom: "2%" }}
-                >
+              <Box sx={styles.box}>
+                <Typography variant="h6" sx={styles.typography1}>
                   {`Howdy ${loadedUser?.name?.split(" ")[0]}`}{" "}
                   <img
                     className="profile-avatar"
@@ -116,7 +114,7 @@ const Dashboard = () => {
                     alt="Profile Avatar"
                   />{" "}
                   ( not {` ${loadedUser?.name?.split(" ")[0]}`} ?{" "}
-                  <Button sx={{ color: "#7b313b" }} onClick={auth.logout}>
+                  <Button sx={styles.button} onClick={auth.logout}>
                     Logout
                   </Button>
                   )
@@ -130,38 +128,16 @@ const Dashboard = () => {
               </Box>
             )}
             {selectedItem === "Created Events" && loadedUser && (
-              <Paper sx={{ p: 2, borderRadius: 1 }}>
-                <Typography
-                  variant="p"
-                  sx={{
-                    fontSize: "20px",
-                    color: "white",
-                    backgroundColor: "#f4743b",
-                    padding: "10px",
-                    borderRadius: "5px",
-                    boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-                    marginBottom: "5px",
-                  }}
-                >
+              <Paper sx={styles.box}>
+                <Typography variant="p" sx={styles.typography2}>
                   Here's a list of the events you've created!
                 </Typography>
                 <UserEvents />
               </Paper>
             )}
             {selectedItem === "Purchased Events" && (
-              <Paper sx={{ p: 2, borderRadius: 1 }}>
-                <Typography
-                  variant="p"
-                  sx={{
-                    fontSize: "20px",
-                    color: "white",
-                    backgroundColor: "#f4743b",
-                    padding: "10px",
-                    borderRadius: "5px",
-                    boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-                    marginBottom: "5%",
-                  }}
-                >
+              <Paper sx={styles.box}>
+                <Typography variant="p" sx={styles.typography2}>
                   Here are your purchased tickets.
                 </Typography>
                 <BoughtEvents />
