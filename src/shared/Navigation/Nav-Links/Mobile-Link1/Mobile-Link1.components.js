@@ -35,9 +35,16 @@ const MobileLinks = () => {
         )}
         {auth.isLoggedIn && (
           <li>
-            <Link to="/add-new-event" className="linkaa">
+            <Link to="/add-new-event" className="addgt">
               <button>ADD EVENT</button>
             </Link>
+          </li>
+        )}
+        {auth.isLoggedIn && (
+          <li>
+            <button className="linkaag" onClick={auth.logout}>
+              LOGOUT
+            </button>
           </li>
         )}
       </ul>

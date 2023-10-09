@@ -54,11 +54,6 @@
   border: none;
 }
 
-.linkaa:hover {
-  background-color: transparent !important;
-  border: none;
-}
-
 @media (max-width: 900px) {
   .profile-avatar {
     width: 35px;

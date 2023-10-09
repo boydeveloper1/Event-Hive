@@ -2,6 +2,10 @@ export const styles = {
   blogsContainer: {
     paddingTop: "3px",
     marginBottom: "8rem",
+
+    "@media (max-width: 900px)": {
+      px: "4rem",
+    },
   },
   blogTitle: {
     fontWeight: 700,

@@ -3,6 +3,11 @@ export const styles = {
     width: "90%",
     margin: "0 auto",
     marginBottom: "12%",
+    "@media (max-width: 900px)": {
+      width: "auto",
+      paddingRight: "4%",
+      marginTop: "-9%",
+    },
   },
   box1: {
     p: 2,
@@ -42,10 +47,36 @@ export const styles = {
     fontSize: "25px",
     fontWeight: "bold",
     paddingBottom: "1.5%",
+    "@media (max-width: 900px)": {
+      fontSize: "20px",
+      paddingBottom: "4%",
+    },
   },
-  typography2: { fontSize: "17px" },
-  typography3: { fontSize: "17px", padding: "3px 0" },
-  typography4: { fontSize: "17px" },
+  typography2: {
+    fontSize: "17px",
+    "@media (max-width: 900px)": {
+      fontSize: "14px",
+      fontWeight: "300px",
+      paddingBottom: "2%",
+    },
+  },
+  typography3: {
+    fontSize: "17px",
+    padding: "3px 0",
+    "@media (max-width: 900px)": {
+      fontSize: "14px",
+      fontWeight: "300px",
+      paddingBottom: "2%",
+    },
+  },
+  typography4: {
+    fontSize: "17px",
+    "@media (max-width: 900px)": {
+      fontSize: "14px",
+      fontWeight: "300px",
+      paddingBottom: "2%",
+    },
+  },
   box4: { p: 2 },
   typography5: { mt: 2, fontSize: "45px" },
   typography6: { mt: 2, whiteSpace: "pre-line" },

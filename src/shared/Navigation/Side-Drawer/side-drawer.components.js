@@ -1,6 +1,7 @@
 import React from "react";
 import { createPortal } from "react-dom";
 import { CSSTransition } from "react-transition-group";
+import CloseIcon from "@mui/icons-material/Close";
 
 import "./side-drawer.styles.css";
 
@@ -13,7 +14,10 @@ const SideDrawer = ({ children, show, onClick }) => {
       mountOnEnter
       unmountOnExit
     >
-      <aside className="side-drawer" onClick={onClick}>
+      <aside className={`side-drawer ${show ? "open" : ""}`}>
+        <button className="close-button" onClick={onClick}>
+          <CloseIcon />
+        </button>
         {children}
       </aside>
     </CSSTransition>

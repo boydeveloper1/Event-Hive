@@ -30,7 +30,7 @@ const BlogList = () => {
   };
 
   return (
-    <div className="App">
+    <div>
       <Container maxWidth="lg" sx={styles.blogsContainer}>
         <Typography variant="h4" sx={styles.blogTitle}>
           Delve into a Vast Collection of Incredible and Informative Articles

@@ -16,7 +16,7 @@
 
 .king-links a {
   border: 1px solid transparent;
-  color: #292929;
+  color: white;
   text-decoration: none;
   padding: 0.7rem;
 }
@@ -36,7 +36,7 @@
 .king-links button {
   cursor: pointer;
   border: 1px solid black;
-  color: black;
+  /* color: black; */
   background: transparent;
   padding: 0.7rem;
   font: inherit;
@@ -67,11 +67,11 @@
     text-decoration: none;
   }
 
-  .king-links button {
+  /* .king-links button {
     border: 1px solid white;
     color: white;
-    background: transparent;
-  }
+    background: #fecb00;
+  } */
 
   /* .king-links button:hover {
     background: #191938;
@@ -90,7 +90,15 @@
   border: none;
 }
 
-.linkaa:hover {
+.linkaag {
+  background-color: #fecb00 !important;
+  border: 1px solid black;
+}
+.linkaag:hover {
+  background-color: transparent !important;
+}
+
+.addgt:hover {
   background-color: transparent !important;
   border: none;
 }
