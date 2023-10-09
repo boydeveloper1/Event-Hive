@@ -8,13 +8,16 @@ export const styles = {
     textAlign: "center",
   },
   "@media (min-width: 400px) and (max-width: 900px)": {
-    padding: "0% 0% 5%",
+    padding: "0% 0% 0%",
   },
   headingStyles: {
     fontSize: "48px",
     fontWeight: "bold",
     marginBottom: "3rem",
     color: "#077307",
+    "@media (max-width: 900px)": {
+      fontSize: "35px",
+    },
   },
   subHeadingStyles: {
     fontStyle: "italic",

@@ -2,12 +2,13 @@ export const styles = {
   image: {
     marginTop: "-10%",
     width: "100%",
-    maxHeight: "100VH",
+    height: "120%",
+    maxHeight: "50em",
     backgroundColor: "green",
     filter: "brightness(60%)",
-    "@media (max-width: 900px)": {
-      padding: "40% 0",
-    },
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "repeat",
   },
   box: {
     position: "relative",
