@@ -6,6 +6,9 @@ export const styles = {
     mt: "50px",
     mb: "100px",
     fontSize: "1.5rem",
+    "@media (max-width: 900px)": {
+      fontSize: "1rem",
+    },
   },
   button: {
     textTransform: "none",
@@ -21,5 +24,9 @@ export const styles = {
     color: "#009B4D",
     fontSize: "1.2rem",
     padding: "12px 44px",
+    "@media (max-width: 900px)": {
+      fontSize: "1rem",
+      padding: "6px 18px",
+    },
   },
 };

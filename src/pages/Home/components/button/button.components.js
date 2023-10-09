@@ -19,7 +19,6 @@ const HomeButton = ({
         endIcon={<ArrowForwardIcon />}
         href={url}
         onClick={onClick}
-        // disabled={disabled}
       >
         {text}
       </Button>

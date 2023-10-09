@@ -59,6 +59,7 @@ const CarouselComponent = ({ events }) => {
         buttonStyles={styles.buttonStyles}
         boxStyles={styles.boxStyles}
         text={"About Us"}
+        url={"/about-us"}
       />
     </Box>
   );

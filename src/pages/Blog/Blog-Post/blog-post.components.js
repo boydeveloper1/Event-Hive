@@ -17,8 +17,9 @@ import {
 
 import { Favorite, Share, Bookmark } from "@mui/icons-material";
 
+import { styles } from "./blog-post.styles";
+
 const BlogPost = () => {
-  const navigate = useNavigate();
   const { blogId } = useParams();
   const post = blogPosts.find((post) => post.id === blogId);
 
@@ -49,78 +50,42 @@ const BlogPost = () => {
               "https://images.unsplash.com/photo-1495423204732-e41dd10e53a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2532&q=80"
             }
           />
-          <Container sx={{ marginBottom: "5%" }}>
-            <Paper
-              elevation={3}
-              sx={{
-                padding: "24px",
-                marginTop: "24px",
-              }}
-            >
+          <Container sx={styles.container}>
+            <Paper elevation={3} sx={styles.paper}>
               <Typography variant="h4" gutterBottom>
                 {post.title}
               </Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginBottom: "16px",
-                }}
-              >
-                <Avatar
-                  sx={{
-                    backgroundColor: (theme) => theme.palette.primary.main,
-                    marginRight: "8px",
-                  }}
-                >
-                  {post.creator.charAt(0)}
-                </Avatar>
+              <Box sx={styles.box1}>
+                <Avatar sx={styles.avatar}>{post.creator.charAt(0)}</Avatar>
                 <Typography variant="body2" color="textSecondary">
                   {post.creator}
                 </Typography>
                 <Typography
                   variant="body2"
                   color="textSecondary"
-                  sx={{ marginLeft: "8px" }}
+                  sx={styles.typography1}
                 >
                   {post.date}
                 </Typography>
               </Box>
-              <Divider sx={{ marginBottom: "16px" }} />
+              <Divider sx={styles.divider} />
               <CardMedia
                 component="img"
                 alt="Blog Post"
                 image={post.image}
-                sx={{ maxWidth: "100%", marginBottom: "16px" }}
+                sx={styles.cardMedia}
               />
-              <Typography variant="body1" sx={{ marginTop: "16px" }}>
+              <Typography variant="body1" sx={styles.typography2}>
                 {post.description}
               </Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  marginTop: "24px",
-                }}
-              >
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
+              <Box sx={styles.box2}>
+                <Box sx={styles.box3}>
                   <IconButton>
                     <Favorite color="primary" />
                   </IconButton>
                   <Typography variant="body2">123 Likes</Typography>
                 </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
+                <Box sx={styles.box4}>
                   <IconButton>
                     <Share color="primary" />
                   </IconButton>

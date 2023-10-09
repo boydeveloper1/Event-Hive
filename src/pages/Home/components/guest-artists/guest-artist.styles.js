@@ -7,7 +7,7 @@ export const styles = {
     alignItems: "center",
     textAlign: "center",
   },
-  "@media (min-width: 400px) and(max-width: 900px)": {
+  "@media (min-width: 400px) and (max-width: 900px)": {
     padding: "0% 0% 5%",
   },
   headingStyles: {

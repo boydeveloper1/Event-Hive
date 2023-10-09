@@ -103,6 +103,7 @@ const Input = ({
         id={id}
         rows={rows || 7}
         value={inputState.value}
+        placeholder={placeholder}
         style={{ whiteSpace: "pre-line" }}
       />
     );

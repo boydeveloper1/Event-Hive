@@ -2,9 +2,12 @@ export const styles = {
   image: {
     marginTop: "-10%",
     width: "100%",
-    height: "100Vh",
+    maxHeight: "100VH",
     backgroundColor: "green",
     filter: "brightness(60%)",
+    "@media (max-width: 900px)": {
+      padding: "40% 0",
+    },
   },
   box: {
     position: "relative",
@@ -33,6 +36,11 @@ export const styles = {
     fontStyle: "italic",
     color: "#FECB00",
     fontSize: "24px",
+    "@media (max-width: 900px)": {
+      fontSize: "15px",
+      marginBottom: "0.5rem",
+      paddingTop: "5%",
+    },
   },
   headingStyles: {
     fontSize: "90px",
@@ -40,7 +48,7 @@ export const styles = {
     marginBottom: "3rem",
     lineHeight: "90%",
     "@media (max-width: 1275px)": {
-      fontSize: "40px",
+      fontSize: "30px",
     },
     "@media (min-width: 2646px) and (max-width: 5000px)": {
       fontSize: "200px",

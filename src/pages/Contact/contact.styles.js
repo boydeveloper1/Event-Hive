@@ -1,0 +1,26 @@
+export const styles = {
+  container: { marginTop: 4 },
+  typography1: { fontWeight: "bold", color: "green" },
+  grid: { marginTop: "3px" },
+  Button: {
+    marginTop: 2,
+    backgroundColor: "green",
+    color: "#fff",
+    "&:hover": { backgroundColor: "green" },
+    transition: "background-color 0.3s",
+  },
+  messageStatus: { marginTop: "9px", color: "green" },
+  errorSending: { marginTop: "9px", color: "red" },
+  paper: { padding: 2, backgroundColor: "green" },
+  typography2: { marginTop: 2, color: "white" },
+  box: {
+    width: "100%",
+    height: "500px",
+    backgroundColor: "#ddd",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "5%",
+  },
+  typography3: { fontWeight: "bold", color: "white" },
+};

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   Container,
   Typography,
-  TextField,
   Button,
   Grid,
   Paper,
@@ -11,132 +10,173 @@ import {
 } from "@mui/material";
 
 import Map from "../../shared/Map/map.components";
-
 import HeroHeader from "../../shared/hero-header/hero-header.components";
+import Input from "../../shared/Input/input.components";
+import ErrorModal from "../../shared/Error-Modal/error-modal.components";
+import LoadingSpinner from "../../shared/Loading-Spinner/loading-spinner.components";
+
+// custom hook for server requests
+import { useHttpClient } from "../../shared/hooks/http-hook";
+
+// useForm hook for overall form validity
+import { useForm } from "../../shared/hooks/form-hooks";
+
+// importing validator
+import {
+  VALIDATOR_EMAIL,
+  VALIDATOR_REQUIRE,
+  VALIDATOR_MINLENGTH,
+} from "../../utils/validators.js";
+
+import { styles } from "./contact.styles";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [messageStatus, setMessageStatus] = useState(false);
+  const [serverResponse, setServerResponse] = useState("");
+  const [errorSending, setErrorSending] = useState(false);
 
-  const handleFormChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const [formState, InputHandler] = useForm(
+    {
+      name: {
+        value: "",
+        isValid: false,
+      },
+      email: {
+        value: "",
+        isValid: false,
+      },
+      message: {
+        value: "",
+        isValid: false,
+      },
+    },
+    false
+  );
+
+  const contactSubmitHandler = async (event) => {
+    event.preventDefault();
 
     // Send a POST request to your backend with the formData
     try {
-      const response = await fetch("/your-backend-endpoint", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const responseData = await sendRequest(
+        process.env.REACT_APP_BACKEND_URL + "/secured/contact",
+        "POST",
+        JSON.stringify({
+          name: formState.input.name.value,
+          email: formState.input.email.value,
+          message: formState.input.message.value,
+        }),
+        { "Content-Type": "application/json" }
+      );
+      setServerResponse(responseData.message);
 
-      if (response.ok) {
-        // Handle a successful response (e.g., show a success message)
-        console.log("Form data sent successfully!");
+      if (responseData.message) {
+        setMessageStatus(true);
       } else {
-        // Handle an error response (e.g., show an error message)
-        console.error("Failed to send form data.");
+        setErrorSending(true);
       }
-    } catch (error) {
-      console.error("An error occurred while sending the form data:", error);
-    }
+    } catch (error) {}
   };
+
+  // Wrap the Map component in useMemo
+  const MemoizedMap = useMemo(
+    () => (
+      <Map
+        center={{ lat: 42.98694800912513, lng: -81.24039290275509 }}
+        zoom={15}
+        style={{ height: "100%" }}
+      />
+    ),
+    []
+  );
 
   return (
     <>
       <CssBaseline />
       <HeroHeader text={"Contact Us"} />
-      <Container sx={{ marginTop: 4 }}>
+      <ErrorModal error={error} onClear={clearError} />
+      {isLoading && <LoadingSpinner asOverlay={true} />}
+
+      <Container sx={styles.container}>
         <Typography
           variant="h4"
           align="center"
           gutterBottom
-          sx={{ fontWeight: "bold", color: "green" }}
+          sx={styles.typography1}
         >
           Get in Touch
         </Typography>
-        <Grid container spacing={6} sx={{ marginTop: "3px" }}>
+        <Grid container spacing={6} sx={styles.grid}>
           <Grid item xs={12} sm={6}>
-            <form onSubmit={handleSubmit}>
-              <TextField
-                label="Your Name"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                name="name"
-                value={formData.name}
-                onChange={handleFormChange}
-                sx={{ marginBottom: 2 }}
+            <form onSubmit={contactSubmitHandler}>
+              <Input
+                element="input"
+                id="name"
+                type="text"
+                label="Your Full Name"
+                validators={[VALIDATOR_REQUIRE()]}
+                errorText="Please enter a name"
+                onInput={InputHandler}
               />
-              <TextField
-                label="Email Address"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                name="email"
-                value={formData.email}
-                onChange={handleFormChange}
-                sx={{ marginBottom: 2 }}
+              <Input
+                element="input"
+                id="email"
+                type="email"
+                label="Enter Email Address"
+                validators={[VALIDATOR_EMAIL()]}
+                errorText="Please enter a valid email address"
+                onInput={InputHandler}
               />
-              <TextField
-                label="Message"
-                variant="outlined"
-                fullWidth
-                multiline
-                rows={4}
-                margin="normal"
-                name="message"
-                value={formData.message}
-                onChange={handleFormChange}
-                sx={{ marginBottom: 2 }}
+              <Input
+                id="message"
+                element="textarea"
+                label="Talk to me here"
+                validators={[VALIDATOR_MINLENGTH(5)]}
+                errorText="Please enter enough information (at least 5 characters)."
+                onInput={InputHandler}
               />
               <Button
                 type="submit"
                 variant="contained"
                 color="primary"
                 size="large"
-                sx={{
-                  marginTop: 2,
-                  backgroundColor: "green",
-                  color: "#fff",
-                  "&:hover": { backgroundColor: "green" },
-                  transition: "background-color 0.3s",
-                }}
+                disabled={!formState.isValid}
+                sx={styles.grid}
               >
                 Submit
               </Button>
+              {messageStatus && (
+                <Typography sx={styles.messageStatus}>
+                  {serverResponse}
+                </Typography>
+              )}
+              {errorSending && (
+                <Typography sx={styles.errorSending}>
+                  There has been an error sending your message
+                </Typography>
+              )}
             </form>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Paper elevation={3} sx={{ padding: 2, backgroundColor: "green" }}>
-              <Typography
-                variant="h6"
-                sx={{ fontWeight: "bold", color: "white" }}
-              >
+            <Paper elevation={3} sx={styles.paper}>
+              <Typography variant="h6" sx={styles.typography3}>
                 Contact Information
               </Typography>
-              <Typography variant="body1" sx={{ marginTop: 2, color: "white" }}>
+              <Typography variant="body1" sx={styles.typography2}>
                 <strong>Address:</strong>
                 <br />
                 678 EventHive Street, Wellington Road
                 <br />
                 London, Ontario, ADE 226
               </Typography>
-              <Typography variant="body1" sx={{ marginTop: 2, color: "white" }}>
+              <Typography variant="body1" sx={styles.typography2}>
                 <strong>Email:</strong>
                 <br />
                 help@adetayo.net
               </Typography>
-              <Typography variant="body1" sx={{ marginTop: 2, color: "white" }}>
+              <Typography variant="body1" sx={styles.typography2}>
                 <strong>Telephone:</strong>
                 <br />
                 +1 (226) xxx-xxxx
@@ -145,23 +185,7 @@ const Contact = () => {
           </Grid>
         </Grid>
       </Container>
-      <Box
-        sx={{
-          width: "100%",
-          height: "500px",
-          backgroundColor: "#ddd",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: "5%",
-        }}
-      >
-        <Map
-          center={{ lat: 42.98694800912513, lng: -81.24039290275509 }}
-          zoom={15}
-          style={{ height: "100%" }}
-        />
-      </Box>
+      <Box sx={styles.box}>{MemoizedMap}</Box>
     </>
   );
 };

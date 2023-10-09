@@ -59,6 +59,10 @@ export const styles = {
     color: "black",
     fontSize: "1.2rem",
     padding: "15px 44px",
+    "@media (max-width: 900px)": {
+      fontSize: "1rem",
+      padding: "6px 18px",
+    },
   },
   typography: {
     fontSize: "17px",

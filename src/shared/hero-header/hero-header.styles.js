@@ -6,7 +6,7 @@ export const styles = {
     backgroundColor: "green",
     filter: "brightness(60%)",
     "@media (min-width: 100px) and (max-width: 900px)": {
-      height: "35vh",
+      height: "5vh",
     },
   },
   box: {

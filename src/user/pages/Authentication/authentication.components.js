@@ -35,7 +35,7 @@ const Authentication = () => {
 
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
-  const [formState, inputHandler, setFormData] = useForm(
+  const [formState, InputHandler, setFormData] = useForm(
     {
       email: {
         value: "",
@@ -101,7 +101,8 @@ const Authentication = () => {
           responseData.name,
           responseData.token
         );
-        navigate("/"); //navigate to dashboard here
+
+        navigate("/");
       } catch (err) {}
     } else {
       try {
@@ -148,14 +149,14 @@ const Authentication = () => {
               label="Your Name"
               validators={[VALIDATOR_REQUIRE()]}
               errorText="Please enter a name"
-              onInput={inputHandler}
+              onInput={InputHandler}
             />
           )}
           {!isLoginMode && (
             <ImageUpload
               center
               id="image"
-              onInput={inputHandler}
+              onInput={InputHandler}
               errorText="Please provide an image"
             />
           )}
@@ -166,7 +167,7 @@ const Authentication = () => {
             label="E-mail"
             validators={[VALIDATOR_EMAIL()]}
             errorText="Please enter a valid email address"
-            onInput={inputHandler}
+            onInput={InputHandler}
           />
           <Input
             element="input"
@@ -175,7 +176,7 @@ const Authentication = () => {
             label="Password"
             validators={[VALIDATOR_MINLENGTH(8)]}
             errorText="Please enter a valid password,at least 8 characters "
-            onInput={inputHandler}
+            onInput={InputHandler}
           />
           <Button type="submit" disabled={!formState.isValid}>
             {isLoginMode ? "LOGIN" : "SIGNUP"}

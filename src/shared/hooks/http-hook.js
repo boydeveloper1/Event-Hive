@@ -18,7 +18,6 @@ export const useHttpClient = () => {
           method,
           body,
           headers,
-          // signal: httpAbortCtrl.signal,
         });
 
         const responseData = await response.json();

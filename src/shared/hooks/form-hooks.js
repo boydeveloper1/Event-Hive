@@ -50,8 +50,7 @@ export const useForm = (initialInputs, initialFormValidity) => {
     });
   }, []);
 
-  // after is used after db has fetched data - specifically for update page
-  // this will be used to preload data into the form, because fetching from db is async
+  //  setting the formdata - matching the current value of form  to bind with state, to send most recent value to db
   const setFormData = useCallback((inputData, formValidity) => {
     dispatch({
       type: "SET_DATA",
