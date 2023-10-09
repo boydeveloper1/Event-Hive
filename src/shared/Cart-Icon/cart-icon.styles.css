@@ -21,3 +21,9 @@
     color: white;
   }
 }
+
+@media (min-width: 900px) {
+  .cart-icon-container {
+    display: none;
+  }
+}

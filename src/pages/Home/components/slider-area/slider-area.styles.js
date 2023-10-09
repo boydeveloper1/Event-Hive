@@ -27,6 +27,9 @@ export const styles = {
     fontSize: "48px",
     fontWeight: "bold",
     color: "white",
+    "@media (max-width: 900px)": {
+      fontSize: "35px",
+    },
   },
 
   card: {

@@ -15,7 +15,7 @@
   background-color: black;
 }
 
-@media (min-width: 1015px) {
+@media (min-width: 900px) {
   .main-header {
     justify-content: space-between;
   }

@@ -12,6 +12,9 @@ export const styles = {
     fontWeight: "bold",
     marginBottom: "3rem",
     color: "white",
+    "@media (max-width: 900px)": {
+      fontSize: "35px",
+    },
   },
   subHeadingStyles: {
     fontStyle: "italic",

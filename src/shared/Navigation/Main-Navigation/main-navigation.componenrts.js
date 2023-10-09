@@ -8,6 +8,7 @@ import SideDrawer from "../Side-Drawer/side-drawer.components";
 import Backdrop from "../../Backdrop/backdrop.components";
 
 import "./main-navigation.styles.css";
+import MobileLinks from "../Nav-Links/Mobile-Link1/Mobile-Link1.components";
 
 const MainNavigation = () => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
@@ -29,7 +30,7 @@ const MainNavigation = () => {
       {/* All Navlink inside Side-drawer for Mobile  */}
       <SideDrawer show={drawerIsOpen} onClick={closeDrawerHandler}>
         <nav className="main-navigation__drawer-nav">
-          <Navlinks />
+          <MobileLinks />
         </nav>
       </SideDrawer>
 
@@ -44,7 +45,7 @@ const MainNavigation = () => {
           <span />
         </button>
         <Link to="/" className="underline">
-          <img src="/images/EventHive.png"></img>
+          <img className="imgaedes" src="/images/EventHive.png"></img>
         </Link>
         <nav className="main-navigation__header-nav">
           <Navlinks />

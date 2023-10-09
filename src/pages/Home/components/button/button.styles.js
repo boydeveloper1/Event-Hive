@@ -4,11 +4,8 @@ export const styles = {
     justifyContent: "center",
     alignItems: "center",
     mt: "50px",
-    mb: "100px",
+    mb: "50px",
     fontSize: "1.5rem",
-    "@media (max-width: 900px)": {
-      fontSize: "1rem",
-    },
   },
   button: {
     textTransform: "none",
