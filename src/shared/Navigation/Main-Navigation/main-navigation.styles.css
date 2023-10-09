@@ -6,9 +6,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-right: 2rem;
+
   cursor: pointer;
-  margin-top: 6px;
 }
 
 .main-navigation__menu-btn span {
@@ -23,11 +22,6 @@
   margin-top: auto;
 }
 
-/* .main-navigation__title a {
-  text-decoration: none;
-  color: green;
-} */
-
 .main-navigation__header-nav {
   display: none;
 }
@@ -38,6 +32,10 @@
 
 @media (min-width: 900px) {
   .main-navigation__menu-btn {
+    display: none;
+  }
+
+  .upMobileMenu {
     display: none;
   }
 

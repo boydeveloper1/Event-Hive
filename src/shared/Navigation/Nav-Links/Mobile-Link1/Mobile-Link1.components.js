@@ -10,25 +10,29 @@ const MobileLinks = () => {
 
   return (
     <Fragment>
-      <ul className="nav-links">
+      <ul className="king-links">
         <li>
           <NavLink to="/" exact="true">
-            HOME
+            Home
           </NavLink>
         </li>
         <li>
-          <NavLink to="/all-events">EVENTS</NavLink>
+          <NavLink to="/all-events">Events</NavLink>
         </li>
         <li>
-          <NavLink to="/about-us">ABOUT US</NavLink>
+          <NavLink to="/about-us">About Us</NavLink>
         </li>
         <li>
-          <NavLink to="/blog">BLOG</NavLink>
+          <NavLink to="/blog">Blog</NavLink>
         </li>
         <li>
-          <NavLink to="/contact-us">CONTACT</NavLink>
+          <NavLink to="/contact-us">Contact</NavLink>
         </li>
-
+        {!auth.isLoggedIn && (
+          <li>
+            <NavLink to="/authentication">Login</NavLink>
+          </li>
+        )}
         {auth.isLoggedIn && (
           <li>
             <Link to="/add-new-event" className="linkaa">

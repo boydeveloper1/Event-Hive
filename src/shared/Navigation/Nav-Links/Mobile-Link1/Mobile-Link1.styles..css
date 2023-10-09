@@ -1,4 +1,4 @@
-.nav-links {
+.king-links {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -10,20 +10,20 @@
   align-items: center;
 }
 
-.nav-links li {
+.king-links li {
   margin: 1rem;
 }
 
-.nav-links a {
+.king-links a {
   border: 1px solid transparent;
   color: #292929;
   text-decoration: none;
   padding: 0.7rem;
 }
 
-.nav-links a:hover,
-.nav-links a:active,
-.nav-links a.active {
+.king-links a:hover,
+.king-links a:active,
+.king-links a.active {
   background: black;
   border-color: #292929;
   /* border-radius: 40px; */
@@ -33,7 +33,7 @@
   background: none;
 }
 
-.nav-links button {
+.king-links button {
   cursor: pointer;
   border: 1px solid black;
   color: black;
@@ -42,36 +42,41 @@
   font: inherit;
 }
 
-.nav-links button:focus {
+.king-links button:focus {
   outline: none;
 }
 
-.nav-links button:hover,
-.nav-links button:active {
+.king-links button:hover,
+.king-links button:active {
   background: #fecb00;
   color: black;
   border-color: black;
 }
 
 @media (min-width: 900px) {
-  .nav-links {
+  .king-links {
     flex-direction: row;
   }
 
-  .nav-links li {
+  .king-links li {
     margin: 0 0.5rem;
   }
 
-  .nav-links a {
+  .king-links a {
     color: white;
     text-decoration: none;
   }
 
-  .nav-links button {
+  .king-links button {
     border: 1px solid white;
     color: white;
     background: transparent;
   }
+
+  /* .king-links button:hover {
+    background: #191938;
+    color: #ffcc00;
+  } */
 }
 .profile-avatar {
   width: 40px;
@@ -80,7 +85,7 @@
   vertical-align: middle;
 }
 
-.nav-links li:last-of-type a:hover {
+.king-links li:last-of-type a:hover {
   background: none !important;
   border: none;
 }

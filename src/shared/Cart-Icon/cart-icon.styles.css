@@ -21,9 +21,15 @@
     color: white;
   }
 }
-
-@media (min-width: 900px) {
+@media (max-width: 900px) {
+  .cart-icon-container {
+    width: 40px;
+    height: 40px;
+    margin-top: -5px;
+  }
+}
+/* @media (min-width: 900px) {
   .cart-icon-container {
     display: none;
   }
-}
+} */
