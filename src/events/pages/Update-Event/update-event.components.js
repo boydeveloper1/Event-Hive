@@ -251,7 +251,7 @@ const UpdateEvent = () => {
             element="input"
             type="text"
             label="Address"
-            validators={[VALIDATOR_MINLENGTH()]}
+            validators={[VALIDATOR_REQUIRE]}
             errorText="Please enter a valid address"
             onInput={InputHandler}
             initialValue={Loadedevent.address}
@@ -262,7 +262,7 @@ const UpdateEvent = () => {
             element="input"
             type="date"
             label="Date"
-            validators={[VALIDATOR_MINLENGTH()]}
+            validators={[VALIDATOR_REQUIRE]}
             errorText="Please enter a valid date"
             onInput={InputHandler}
             initialValue={Loadedevent.date}

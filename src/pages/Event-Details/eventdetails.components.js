@@ -97,7 +97,7 @@ const EventDetailPage = () => {
                   style={{ width: "100%" }}
                 />
                 <Typography variant="h2" component="h2" sx={styles.typography5}>
-                  About Event
+                  Details About Event{" "}
                 </Typography>
                 <Typography variant="p" component="p" sx={styles.typography6}>
                   {event.description}

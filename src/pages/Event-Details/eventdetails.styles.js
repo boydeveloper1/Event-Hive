@@ -2,11 +2,13 @@ export const styles = {
   grid: {
     width: "90%",
     margin: "0 auto",
-    marginBottom: "12%",
+    marginBottom: "8%",
+
     "@media (max-width: 900px)": {
       width: "auto",
       paddingRight: "4%",
       marginTop: "-9%",
+      display: "block",
     },
   },
   box1: {
@@ -78,9 +80,13 @@ export const styles = {
     },
   },
   box4: { p: 2 },
-  typography5: { mt: 2, fontSize: "45px" },
+  typography5: { mt: 4, fontSize: "35px", fontWeight: "bold" },
   typography6: { mt: 2, whiteSpace: "pre-line" },
-  box5: { p: 2, backgroundColor: "#FFCC02", marginBottom: "2%" },
+  box5: {
+    p: 2,
+    backgroundColor: "#FFCC02",
+    marginBottom: "2%",
+  },
   typography7: {
     fontSize: "25px",
     fontWeight: "bold",
