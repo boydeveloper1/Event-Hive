@@ -143,7 +143,7 @@ const Contact = () => {
                 color="primary"
                 size="large"
                 disabled={!formState.isValid}
-                sx={styles.grid}
+                sx={styles.Button}
               >
                 Submit
               </Button>
