@@ -61,7 +61,7 @@ export const styles = {
     border: "double 4px #FECB00",
     color: "black",
     fontSize: "1.2rem",
-    padding: "15px 44px",
+    padding: "12px 44px",
     "@media (max-width: 900px)": {
       fontSize: "1rem",
       padding: "6px 18px",

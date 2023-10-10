@@ -57,7 +57,6 @@ const CarouselComponent = ({ events }) => {
       </Grid>
       <HomeButton
         buttonStyles={styles.buttonStyles}
-        boxStyles={styles.boxStyles}
         text={"About Us"}
         url={"/about-us"}
       />
