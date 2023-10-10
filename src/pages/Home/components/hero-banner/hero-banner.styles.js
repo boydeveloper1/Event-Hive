@@ -2,7 +2,7 @@ export const styles = {
   image: {
     marginTop: "-10%",
     width: "100%",
-    height: "100%",
+    height: "100vh",
     maxHeight: "50em",
     backgroundColor: "green",
     filter: "brightness(60%)",
