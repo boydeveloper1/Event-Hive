@@ -20,10 +20,11 @@ const About = () => {
                 We Inspire People to Go Out More
               </Typography>
               <Typography variant="p">
-                Influential media, entertainment & technology show inspiratio
-                speaker cluding game changing not just a large scale confere
-                educational hub on digital technologie for business, wher people
-                communicate, inspired find.
+                At EventHive, we're dedicated to rekindling your love for
+                experiencing new things. Our platform is designed to inspire you
+                to break free from routines, discover exciting events, and
+                connect with people who share your interests. Join us in the
+                pursuit of a more adventurous and fulfilling life!
               </Typography>
               <HomeButton
                 url={"/all-events"}
@@ -85,7 +86,7 @@ const About = () => {
           </Grid>
 
           <Grid item xs={12} sm={4}>
-            <Paper elevation={3} sx={styles.paper}>
+            <Paper elevation={3} sx={styles.paper1}>
               <img
                 src="https://demo.themewinter.com/wp/eventplace/wp-content/uploads/2022/12/event_host.png"
                 alt=" 1"
@@ -103,7 +104,7 @@ const About = () => {
           </Grid>
 
           <Grid item xs={12} sm={4}>
-            <Paper elevation={3} sx={styles.paper}>
+            <Paper elevation={3} sx={styles.paper1}>
               <img
                 src="https://demo.themewinter.com/wp/eventplace/wp-content/uploads/2022/12/tickets.png"
                 alt=" 1"
@@ -141,10 +142,11 @@ const About = () => {
                   Event Organizers
                 </Typography>
                 <Typography variant="p">
-                  Influential media, entertainment & technology show
-                  inspirational speaker including game-changing not just a
-                  large-scale conference, educational hub on digital technologie
-                  for business, wher people communicate, inspired find.
+                  Your Partner in Success! At EventHive, we empower event
+                  organizers to create memorable experiences. Connect with us
+                  today to explore how our platform can elevate your events and
+                  simplify your planning process. Let's make every event
+                  exceptional!"
                 </Typography>
                 <HomeButton
                   url={"/contact-us"}

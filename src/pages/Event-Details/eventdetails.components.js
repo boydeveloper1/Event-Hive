@@ -13,6 +13,7 @@ import { AuthContext } from "../../shared/context/auth-context";
 import { styles } from "./eventdetails.styles";
 
 const EventDetailPage = () => {
+  const Navigate = useNavigate();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [event, setEvent] = useState([]);
   const [ticketQuantity, setTicketQuantity] = useState(1);
@@ -40,7 +41,9 @@ const EventDetailPage = () => {
         );
 
         setEvent(responseData.event);
-      } catch (error) {}
+      } catch (error) {
+        Navigate("/404");
+      }
     };
     fetchEvent();
   }, [sendRequest, id]);

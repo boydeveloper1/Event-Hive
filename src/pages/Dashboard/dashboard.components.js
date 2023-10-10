@@ -42,7 +42,9 @@ const Dashboard = () => {
         );
 
         setLoadedUser(responseData.user);
-      } catch (error) {}
+      } catch (error) {
+        Navigate("/404");
+      }
     };
     fetchUsers();
   }, [sendRequest, loggedID]);
