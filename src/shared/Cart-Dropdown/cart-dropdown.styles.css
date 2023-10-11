@@ -28,5 +28,5 @@
 }
 
 .cart-items-container::-webkit-scrollbar {
-  width: 0; /* Hide the scrollbar for Chrome, Safari, and newer Edge */
+  width: 0;
 }

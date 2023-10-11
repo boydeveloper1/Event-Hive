@@ -9,7 +9,7 @@ export const styles = {
     backgroundColor: "green",
 
     "@media (max-width: 900px)": {
-      minHeight: "50vh",
+      minHeight: "53vh",
       marginBottom: "6%",
     },
   },
@@ -21,6 +21,9 @@ export const styles = {
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
+    "@media (max-width: 900px)": {
+      width: "107%",
+    },
   },
   contentBox: {
     position: "absolute",
@@ -55,8 +58,9 @@ export const styles = {
     marginBottom: "3rem",
     lineHeight: "90%",
     "@media (max-width: 900px)": {
-      fontSize: "25px",
-      marginBottom: "2rem",
+      fontSize: "22px",
+      marginBottom: "1rem",
+      lineHeight: "1.6rem",
     },
     "@media (min-width: 2646px) and (max-width: 5000px)": {
       fontSize: "200px",

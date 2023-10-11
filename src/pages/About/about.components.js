@@ -53,7 +53,10 @@ const About = () => {
               <img
                 src="/images/about.jpg"
                 alt="Square"
-                style={{ width: "65%", height: "100%" }}
+                style={{
+                  width: "65%",
+                  height: "100%",
+                }}
               />
               <Box sx={styles.box4}>
                 <img
@@ -129,7 +132,7 @@ const About = () => {
                 <img
                   src="https://images.unsplash.com/photo-1506485927884-1900e37ac5ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2532&q=80"
                   alt="Square "
-                  style={{ width: "75%", height: "100%" }}
+                  style={{ width: "100%", height: "100%" }}
                 />
               </Box>
             </Grid>

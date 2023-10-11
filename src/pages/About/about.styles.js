@@ -13,6 +13,11 @@ export const styles = {
     fontWeight: "bold",
     lineHeight: "3.9rem",
     marginBottom: "2%",
+    "@media (max-width: 900px)": {
+      fontSize: "40px",
+      lineHeight: "2.9rem",
+      marginBottom: "6%",
+    },
   },
   box2: { p: "2rem" },
   box3: { overflow: "hidden" },
@@ -28,6 +33,9 @@ export const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    "@media (max-width: 900px)": {
+      display: "none",
+    },
   },
   grid1: {
     mt: "10rem",
@@ -56,7 +64,13 @@ export const styles = {
     },
   },
   grid2: { marginTop: "3%" },
-  box6: { overflow: "hidden" },
+  box6: {
+    overflow: "hidden",
+    marginRight: "9%",
+    "@media (max-width: 900px)": {
+      marginRight: "0%",
+    },
+  },
   typography5: {
     fontStyle: "italic",
     color: "#FECB00",
@@ -67,6 +81,11 @@ export const styles = {
     fontWeight: "bold",
     lineHeight: "3.9rem",
     marginBottom: "2%",
+    "@media (max-width: 900px)": {
+      fontSize: "40px",
+      lineHeight: "2.9rem",
+      marginBottom: "6%",
+    },
   },
   box7: {
     mt: "3rem",
@@ -86,6 +105,11 @@ export const styles = {
     fontWeight: "bold",
     lineHeight: "3.9rem",
     marginBottom: "5%",
+    "@media (max-width: 900px)": {
+      fontSize: "40px",
+      lineHeight: "2.9rem",
+      marginBottom: "10%",
+    },
   },
   paper2: { p: "5px", textAlign: "center", pb: "30px" },
   typography8: {
