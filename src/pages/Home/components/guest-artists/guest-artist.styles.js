@@ -6,10 +6,11 @@ export const styles = {
     flexDirection: "column",
     alignItems: "center",
     textAlign: "center",
+    "@media (max-width: 900px)": {
+      padding: "1% 1% 10%",
+    },
   },
-  "@media (min-width: 400px) and (max-width: 900px)": {
-    padding: "0% 0% 0%",
-  },
+
   headingStyles: {
     fontSize: "48px",
     fontWeight: "bold",
@@ -17,6 +18,7 @@ export const styles = {
     color: "#077307",
     "@media (max-width: 900px)": {
       fontSize: "35px",
+      marginBottom: "1rem",
     },
   },
   subHeadingStyles: {

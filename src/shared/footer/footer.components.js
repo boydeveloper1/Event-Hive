@@ -55,11 +55,11 @@ const Footer = () => {
           <Typography variant="h6" sx={styles.typography1}>
             DOWNLOAD APP:
           </Typography>
-          <Link>
+          <Link to={"https://apps.apple.com/ca/app/eventbrite/id487922291"}>
             <img
               src="/images/footer-image.png"
               alt="Image 2"
-              style={{ marginLeft: "-2%" }}
+              style={{ marginLeft: "-2%", width: "50%", marginTop: "3%" }}
             />
           </Link>
         </Grid>
