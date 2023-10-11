@@ -1,12 +1,16 @@
 export const styles = {
   card: {
-    maxWidth: 600,
+    maxWidth: 700,
     margin: "auto",
     height: "400px",
     backgroundColor: "#FFFFFF",
     mt: "3px",
     mb: "3px",
     boxShadow: "10px 5px 5px #D0D2CC",
+    "@media (max-width: 900px)": {
+      height: "auto",
+      paddingBottom: "7%",
+    },
   },
 
   room: {
@@ -58,7 +62,7 @@ export const styles = {
   cardActions: {
     display: "flex",
     justifyContent: "space-between",
-    padding: "5% 5% 5% 0%",
+    padding: "5% 5% 5% 5%",
   },
 
   buttonOne: {
@@ -83,6 +87,9 @@ export const styles = {
       backgroundColor: "black",
       color: "#FFCC02",
     },
+    "@media (max-width: 900px)": {
+      fontSize: "10px",
+    },
   },
 
   quantityLabel: {
@@ -104,6 +111,9 @@ export const styles = {
     fontSize: "14px",
     minWidth: "40px",
     textAlign: "center",
+    "@media (max-width: 900px)": {
+      fontSize: "10px",
+    },
   },
 
   priceLabel: {
@@ -126,6 +136,9 @@ export const styles = {
   priceContainer: {
     display: "inline-block",
     marginLeft: "4%",
+    "@media (max-width: 900px)": {
+      marginTop: "2.5%",
+    },
   },
   cardContent: { display: "flex", flexDirection: "column", flexGrow: 1 },
 };

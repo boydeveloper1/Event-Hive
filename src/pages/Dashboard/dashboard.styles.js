@@ -11,5 +11,16 @@ export const styles = {
     borderRadius: "5px",
     boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
     marginBottom: "5px",
+    "@media (max-width: 900px)": {
+      fontSize: "15px",
+    },
+  },
+
+  box1: {
+    display: "inline-block",
+    margin: "0px 5px",
+    "@media (max-width: 900px)": {
+      margin: "0px 5px",
+    },
   },
 };

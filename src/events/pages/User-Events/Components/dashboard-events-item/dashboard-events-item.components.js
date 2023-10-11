@@ -127,7 +127,7 @@ const DashboardEventsItem = ({ event, onDelete }) => {
         }
       ></Modal>
 
-      <Grid item key={id} xs={12} sm={12} md={6}>
+      <Grid item key={id} xs={12} sm={12} md={6} p={1} mt={3}>
         <Card sx={styles.card}>
           {isLoading && <LoadingSpinner />}
           <Link
@@ -167,10 +167,10 @@ const DashboardEventsItem = ({ event, onDelete }) => {
                 variant="body2"
                 color="textSecondary"
                 component="p"
-                sx={styles.date} // Use the same styling as date
+                sx={styles.date}
               >
                 <Category sx={styles.category} />
-                {category} {/* Display the category */}
+                {category}
               </Typography>
               <Typography
                 variant="body2"

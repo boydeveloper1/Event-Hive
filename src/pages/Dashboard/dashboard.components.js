@@ -109,12 +109,14 @@ const Dashboard = () => {
             {selectedItem === "Dashboard" && loadedUser && (
               <Box sx={styles.box}>
                 <Typography variant="h6" sx={styles.typography1}>
-                  {`Howdy ${loadedUser?.name?.split(" ")[0]}`}{" "}
-                  <img
-                    className="profile-avatar"
-                    src={auth.image}
-                    alt="Profile Avatar"
-                  />{" "}
+                  {`Howdy ${loadedUser?.name?.split(" ")[0]}`}
+                  <Box sx={styles.box1}>
+                    <img
+                      className="profile-avatar"
+                      src={auth.image}
+                      alt="Profile Avatar"
+                    />
+                  </Box>
                   ( not {` ${loadedUser?.name?.split(" ")[0]}`} ?{" "}
                   <Button sx={styles.button} onClick={auth.logout}>
                     Logout

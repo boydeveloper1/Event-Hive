@@ -41,7 +41,7 @@ const DashboardBoughtEventsItem = ({ event }) => {
         </div>
       </Modal>
 
-      <Grid item xs={12} sm={12} md={6}>
+      <Grid item xs={12} sm={12} md={6} mt={3}>
         <Card sx={styles.card}>
           <Link
             style={{ textDecoration: "none", display: "flex" }}

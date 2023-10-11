@@ -1,12 +1,16 @@
 export const styles = {
   card: {
-    maxWidth: 600,
+    maxWidth: 700,
     margin: "auto",
     height: "500px",
     backGroundColor: "#white",
     mt: "3px",
     mb: "3px",
     boxShadow: "10px 5px 5px #D0D2CC",
+    "@media (max-width:900px)": {
+      height: "auto",
+      paddingBottom: "7%",
+    },
   },
 
   cardContent: {
@@ -52,13 +56,13 @@ export const styles = {
   cardActions: {
     display: "flex",
     justifyContent: "space-between",
-    padding: "5% 5% 5% 0%",
+    padding: "5% 5% 5% 5%",
   },
 
   box: {
     display: "flex",
     justifyContent: "space-between",
-    padding: "0% 5% 1% 0%",
+    padding: "0% 5% 1% 5%",
   },
 
   buttonOne: {
@@ -70,6 +74,9 @@ export const styles = {
     "&:hover": {
       backgroundColor: "transparent",
     },
+    "@media (max-width:900px)": {
+      fontSize: "10px",
+    },
   },
 
   buttonTwo: {
@@ -80,6 +87,9 @@ export const styles = {
     "&:hover": {
       backgroundColor: "#FFCC00",
     },
+    "@media (max-width:900px)": {
+      fontSize: "10px",
+    },
   },
 
   buttonThree: {
@@ -87,9 +97,12 @@ export const styles = {
     backgroundColor: "#FFCC00",
     color: "black",
     border: "thick double #FFCC00",
-    marginRight: "3px",
+    marginRight: "4%",
     "&:hover": {
       backgroundColor: "#FFCC00",
+    },
+    "@media (max-width:900px)": {
+      fontSize: "10px",
     },
   },
   buttonFour: {
@@ -99,6 +112,9 @@ export const styles = {
     border: "thick double red",
     "&:hover": {
       backgroundColor: "red",
+    },
+    "@media (max-width:900px)": {
+      fontSize: "10px",
     },
   },
   buttonDisabled: {

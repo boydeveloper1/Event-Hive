@@ -57,7 +57,7 @@ const Footer = () => {
           </Typography>
           <Link>
             <img
-              src="/images/pengg.png"
+              src="/images/footer-image.png"
               alt="Image 2"
               style={{ marginLeft: "-2%" }}
             />
