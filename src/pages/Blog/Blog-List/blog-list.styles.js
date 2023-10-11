@@ -4,7 +4,7 @@ export const styles = {
     marginBottom: "8rem",
 
     "@media (max-width: 900px)": {
-      px: "4rem",
+      px: "1rem",
     },
   },
   blogTitle: {

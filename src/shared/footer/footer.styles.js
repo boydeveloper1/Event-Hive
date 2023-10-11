@@ -4,6 +4,9 @@ export const styles = {
     background: "linear-gradient(to right, #006400, #000000)",
     color: "white",
     padding: "4% 5% 5% 15% !important",
+    "@media (max-width: 900px)": {
+      padding: "13% 5% 5% 15% !important",
+    },
   },
   typography1: {
     marginTop: "7%",
