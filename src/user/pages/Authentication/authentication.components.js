@@ -137,7 +137,7 @@ const Authentication = () => {
       <ErrorModal error={error} onClear={clearError} />
       <Card className="authentication">
         {isLoading && <LoadingSpinner asOverlay={true} />}
-        {isLoginMode ? <h2>Login Required</h2> : <h2>Register Required</h2>}
+        {isLoginMode ? <h2>Login Here </h2> : <h2>Sign up Here </h2>}
         <hr />
         <form onSubmit={authSubmitHanlder}>
           {/* This input shows up to sign in  */}
@@ -179,11 +179,11 @@ const Authentication = () => {
             onInput={InputHandler}
           />
           <Button type="submit" disabled={!formState.isValid}>
-            {isLoginMode ? "LOGIN" : "SIGNUP"}
+            {isLoginMode ? "LOGIN" : "SIGN UP"}
           </Button>
         </form>
         <Button inverse onClick={switchModeHandler}>
-          SWITCH TO {isLoginMode ? "SIGNUP" : "LOGIN"}
+          SWITCH TO {isLoginMode ? "SIGN UP" : "LOGIN"}
         </Button>
       </Card>
     </Fragment>
