@@ -10,7 +10,7 @@ const FooterCopyright = () => {
       <CssBaseline />
       <Box sx={styles.box}>
         <Typography variant="p" component="p" sx={styles.typography}>
-          © 2023. Designed By Adetayo-Chukwudi. All rights reserved
+          © 2023. Designed By Adetayo-Chukwudi
         </Typography>
       </Box>
     </>

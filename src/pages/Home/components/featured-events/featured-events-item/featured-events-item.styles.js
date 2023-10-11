@@ -71,6 +71,9 @@ export const styles = {
     backgroundColor: "transparent",
     border: "thick double #F5F5F5",
     color: "black",
+    "@media (max-width:900px)": {
+      fontSize: "10px",
+    },
   },
 
   buttonTwo: {
@@ -78,5 +81,8 @@ export const styles = {
     backgroundColor: "#FFCC00",
     color: "black",
     border: "thick double #FFCC00",
+    "@media (max-width:900px)": {
+      fontSize: "10px",
+    },
   },
 };

@@ -16,7 +16,7 @@
 
 .king-links a {
   border: 1px solid transparent;
-  color: white;
+  color: black;
   text-decoration: none;
   padding: 0.7rem;
 }
@@ -36,7 +36,7 @@
 .king-links button {
   cursor: pointer;
   border: 1px solid black;
-  /* color: black; */
+  color: black;
   background: transparent;
   padding: 0.7rem;
   font: inherit;
@@ -63,24 +63,13 @@
   }
 
   .king-links a {
-    color: white;
+    color: black;
     text-decoration: none;
   }
-
-  /* .king-links button {
-    border: 1px solid white;
-    color: white;
-    background: #fecb00;
-  } */
-
-  /* .king-links button:hover {
-    background: #191938;
-    color: #ffcc00;
-  } */
 }
 .profile-avatar {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  width: 35px;
   border-radius: 50%;
   vertical-align: middle;
 }
@@ -93,6 +82,7 @@
 .linkaag {
   background-color: #fecb00 !important;
   border: 1px solid black;
+  color: black;
 }
 .linkaag:hover {
   background-color: transparent !important;

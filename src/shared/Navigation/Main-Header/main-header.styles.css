@@ -23,5 +23,6 @@
 @media (max-width: 900px) {
   .main-header {
     justify-content: space-between;
+    padding: 0px 0px;
   }
 }
