@@ -153,7 +153,7 @@ const About = () => {
                 </Typography>
                 <HomeButton
                   url={"/contact-us"}
-                  text={"CONTACT US"}
+                  text={"contact."}
                   boxStyles={{ mt: "30px" }}
                   buttonStyles={{
                     textTransform: "none",
