@@ -224,6 +224,7 @@ const UpdateEvent = () => {
             validators={[VALIDATOR_REQUIRE()]}
             errorText="Please enter a valid organizer."
             initialValue={Loadedevent.organizer}
+            initialValid={true}
             onInput={InputHandler}
           />
           <Input
@@ -233,7 +234,8 @@ const UpdateEvent = () => {
             initialValue={Loadedevent.category}
             label="Event Category"
             validators={[VALIDATOR_REQUIRE()]}
-            errorText="Please enter a valid Province. "
+            errorText="Please enter a valid Province."
+            initialValid={true}
             onInput={InputHandler}
           />
           <Input
@@ -243,7 +245,8 @@ const UpdateEvent = () => {
             initialValue={Loadedevent.province}
             label="Province"
             validators={[VALIDATOR_REQUIRE()]}
-            errorText="Please enter a valid Province. "
+            errorText="Please enter a valid Province."
+            initialValid={true}
             onInput={InputHandler}
           />
           <Input
