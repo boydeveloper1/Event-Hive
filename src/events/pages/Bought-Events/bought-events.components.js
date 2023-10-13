@@ -18,7 +18,7 @@ const BoughtEvents = () => {
         const responseData = await sendRequest(
           `${process.env.REACT_APP_BACKEND_URL}/events/boughtEvents/user/${auth.userId}`
         );
-        console.log(responseData);
+
         const myBoughtEvents = responseData.boughtEvents.reverse();
         setLoadedEvents(myBoughtEvents);
       } catch (error) {}

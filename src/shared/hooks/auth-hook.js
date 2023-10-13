@@ -78,7 +78,7 @@ export const useAuth = () => {
         new Date(storedData.expiration)
       );
     } else {
-      console.log("No user data found in localStorage.");
+      // console.log("No user data found in localStorage.");
     }
   }, [login]);
 
