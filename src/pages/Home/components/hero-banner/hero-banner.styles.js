@@ -63,7 +63,7 @@ export const styles = {
       lineHeight: "1.6rem",
     },
     "@media (min-width: 2646px) and (max-width: 5000px)": {
-      fontSize: "200px",
+      fontSize: "100px",
     },
   },
 };

@@ -221,7 +221,7 @@ const UpdateEvent = () => {
             element="input"
             type="text"
             label="Organized by"
-            validators={[VALIDATOR_REQUIRE]}
+            validators={[VALIDATOR_REQUIRE()]}
             errorText="Please enter a valid organizer."
             initialValue={Loadedevent.organizer}
             onInput={InputHandler}
@@ -232,7 +232,7 @@ const UpdateEvent = () => {
             options={EventOptions}
             initialValue={Loadedevent.category}
             label="Event Category"
-            validators={[VALIDATOR_REQUIRE]}
+            validators={[VALIDATOR_REQUIRE()]}
             errorText="Please enter a valid Province. "
             onInput={InputHandler}
           />
@@ -242,7 +242,7 @@ const UpdateEvent = () => {
             options={ProvinceOptions}
             initialValue={Loadedevent.province}
             label="Province"
-            validators={[VALIDATOR_REQUIRE]}
+            validators={[VALIDATOR_REQUIRE()]}
             errorText="Please enter a valid Province. "
             onInput={InputHandler}
           />
@@ -251,7 +251,7 @@ const UpdateEvent = () => {
             element="input"
             type="text"
             label="Address"
-            validators={[VALIDATOR_REQUIRE]}
+            validators={[VALIDATOR_REQUIRE()]}
             errorText="Please enter a valid address"
             onInput={InputHandler}
             initialValue={Loadedevent.address}
@@ -262,7 +262,7 @@ const UpdateEvent = () => {
             element="input"
             type="date"
             label="Date"
-            validators={[VALIDATOR_REQUIRE]}
+            validators={[VALIDATOR_REQUIRE()]}
             errorText="Please enter a valid date"
             onInput={InputHandler}
             initialValue={Loadedevent.date}
@@ -273,7 +273,7 @@ const UpdateEvent = () => {
             element="input"
             type="time"
             label="Start Time"
-            validators={[VALIDATOR_REQUIRE]}
+            validators={[VALIDATOR_REQUIRE()]}
             errorText="Please enter a valid Start Time."
             onInput={InputHandler}
             initialValue={Loadedevent.startTime}
@@ -284,7 +284,7 @@ const UpdateEvent = () => {
             element="input"
             type="time"
             label="End Time"
-            validators={[VALIDATOR_REQUIRE]}
+            validators={[VALIDATOR_REQUIRE()]}
             errorText="Please enter a valid End Time."
             onInput={InputHandler}
             initialValue={Loadedevent.endTime}
@@ -295,7 +295,7 @@ const UpdateEvent = () => {
             element="input"
             type="text"
             label="Price"
-            validators={[VALIDATOR_REQUIRE]}
+            validators={[VALIDATOR_REQUIRE()]}
             errorText="Please enter a valid price"
             onInput={InputHandler}
             initialValue={Loadedevent.price}
